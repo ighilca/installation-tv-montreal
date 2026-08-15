@@ -390,6 +390,14 @@
     confirmScreen.hidden = false;
     document.body.classList.add("is-confirming");
     window.scrollTo(0, 0);
+
+    if (typeof fbq === "function") {
+      fbq("track", "Lead", {
+        content_name: "Installation TV Montreal",
+        currency: "CAD",
+        value: computeTotal(),
+      });
+    }
   }
 
   function hideConfirm() {
