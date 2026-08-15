@@ -441,13 +441,15 @@ input[type="tel"].is-invalid {
     );
 }
 
-.option-tile__art--stand-white {
-  background: linear-gradient(180deg, #eceff1 38%, #f8fafb 38% 68%, #cfd8dc 68%);
-  border: 1px solid #c5d0d6;
+.option-tile__art--cover {
+  object-fit: cover;
 }
 
-.option-tile__art--stand-black {
-  background: linear-gradient(180deg, #2a343a 38%, #151c21 38% 68%, #0a0f12 68%);
+img.extra__art {
+  object-fit: contain;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px var(--line);
+  display: block;
 }
 
 .option-tile__title {
@@ -528,24 +530,6 @@ input[type="tel"].is-invalid {
   width: 64px;
   height: 64px;
   border-radius: 12px;
-}
-
-.extra__art--cable {
-  background: linear-gradient(180deg, #2c3a42 18%, #e8eef2 18% 82%, #2c3a42 82%);
-  position: relative;
-}
-
-.extra__art--cable::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 12%;
-  bottom: 12%;
-  width: 9px;
-  margin-left: -4.5px;
-  background: #fff;
-  border-radius: 2px;
-  box-shadow: 0 0 0 1px #b0bec5;
 }
 
 .extra__art--led {
