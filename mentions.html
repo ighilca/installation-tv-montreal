@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr" class="lang-fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mentions légales — Installation TV Montréal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="legal.css" />
+</head>
+<body class="legal-body">
+  <header class="legal-top">
+    <a href="index.html">← Installation TV Montréal</a>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button type="button" class="lang-btn is-active" data-lang="fr" aria-pressed="true">FR</button>
+      <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+
+  <article class="legal-wrap">
+    <div class="legal-fr">
+      <h1>Mentions légales</h1>
+      <p class="legal-updated">Dernière mise à jour : 15 août 2026</p>
+
+      <h2>Éditeur</h2>
+      <p>Ce site est exploité par Ride Construction, au Québec, Canada.<br />
+      Courriel : <a href="mailto:rideconstruction1@gmail.com">rideconstruction1@gmail.com</a></p>
+
+      <h2>Hébergement</h2>
+      <p>Vercel Inc., États-Unis. Nom de domaine : tv.rideconstruction.com.</p>
+
+      <h2>Estimations</h2>
+      <p>Les montants affichés sont des estimations de pose, taxes en sus le cas échéant. Ils ne constituent pas un contrat. Le prix final se confirme au téléphone ou sur place (accès, type de mur, matériel).</p>
+
+      <h2>Propriété intellectuelle</h2>
+      <p>Textes, mise en page et photos du formulaire appartiennent à Ride Construction ou à leurs titulaires. Toute reproduction non autorisée est interdite.</p>
+
+      <h2>Renseignements personnels</h2>
+      <p><a href="confidentialite.html">Politique de confidentialité</a> · <a href="cookies.html">Politique de témoins</a></p>
+    </div>
+
+    <div class="legal-en">
+      <h1>Legal notice</h1>
+      <p class="legal-updated">Last updated: August 15, 2026</p>
+
+      <h2>Publisher</h2>
+      <p>This site is operated by Ride Construction, in Quebec, Canada.<br />
+      Email: <a href="mailto:rideconstruction1@gmail.com">rideconstruction1@gmail.com</a></p>
+
+      <h2>Hosting</h2>
+      <p>Vercel Inc., United States. Domain: tv.rideconstruction.com.</p>
+
+      <h2>Estimates</h2>
+      <p>Prices shown are install estimates, taxes extra if applicable. They are not a contract. The final price is confirmed by phone or on site (access, wall type, hardware).</p>
+
+      <h2>Intellectual property</h2>
+      <p>Copy, layout and photos on this form belong to Ride Construction or their owners. Unauthorized reuse is prohibited.</p>
+
+      <h2>Personal information</h2>
+      <p><a href="confidentialite.html">Privacy policy</a> · <a href="cookies.html">Cookie policy</a></p>
+    </div>
+  </article>
+
+  <footer class="site-footer">
+    <nav aria-label="Pages légales">
+      <a href="confidentialite.html">Confidentialité</a>
+      <a href="cookies.html">Témoins</a>
+      <a href="mentions.html">Mentions</a>
+    </nav>
+  </footer>
+
+  <div class="consent-bar" id="consent-bar" hidden role="dialog" aria-labelledby="consent-title">
+    <p id="consent-title" class="legal-fr">On charge un pixel Meta seulement si vous acceptez, pour mesurer les pubs. Essentiel : mémoriser ce choix.</p>
+    <p class="legal-en">We load a Meta pixel only if you accept, to measure ads. Essential: remember this choice.</p>
+    <p class="consent-bar__more legal-fr"><a href="cookies.html">Politique de témoins</a></p>
+    <p class="consent-bar__more legal-en"><a href="cookies.html">Cookie policy</a></p>
+    <div class="consent-bar__actions">
+      <button type="button" class="btn btn-ghost" data-consent="refuse">Refuser / Refuse</button>
+      <button type="button" class="btn btn-primary" data-consent="accept">Accepter / Accept</button>
+    </div>
+  </div>
+
+  <script src="legal.js"></script>
+  <script src="consent.js"></script>
+</body>
+</html>

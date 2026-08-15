@@ -4,27 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Installation TV Montréal</title>
-  <!-- Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1434401558131877');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1434401558131877&ev=PageView&noscript=1"
-  alt="" /></noscript>
-  <!-- End Meta Pixel Code -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="legal.css" />
 </head>
 <body>
   <div class="shell">
@@ -79,6 +63,7 @@
             inputmode="tel"
           />
           <p class="field-error" id="phone-error" hidden data-i18n="phoneError">Veuillez entrer un numéro de téléphone.</p>
+          <p class="privacy-note" data-i18n="collectNotice">Numéro et choix d’installation : pour vous rappeler au sujet de cette estimation. Envoi par courriel (hors Québec). Accès ou correction : rideconstruction1@gmail.com.</p>
         </section>
 
         <!-- 2. Size -->
@@ -256,9 +241,35 @@
           </div>
         </section>
 
+        <label class="consent-box" id="privacy-box">
+          <input type="checkbox" id="privacy-consent" name="privacy" required />
+          <span data-i18n="privacyConsent">J’accepte d’être contacté au sujet de cette estimation.</span>
+        </label>
+        <p class="field-error" id="privacy-error" hidden data-i18n="privacyError">Cochez la case pour envoyer la demande.</p>
+        <p class="privacy-note">
+          <a href="confidentialite.html" data-i18n="privacyLink">Politique de confidentialité</a>
+        </p>
+
         <div class="sticky-spacer" aria-hidden="true"></div>
       </form>
     </main>
+  </div>
+
+  <footer class="site-footer">
+    <nav aria-label="Pages légales">
+      <a href="confidentialite.html" data-i18n="navPrivacy">Confidentialité</a>
+      <a href="cookies.html" data-i18n="navCookies">Témoins</a>
+      <a href="mentions.html" data-i18n="navLegal">Mentions</a>
+    </nav>
+  </footer>
+
+  <div class="consent-bar consent-bar--above-dock" id="consent-bar" hidden role="dialog" aria-labelledby="consent-title">
+    <p id="consent-title" data-i18n="cookieBanner">On charge un pixel Meta seulement si vous acceptez, pour mesurer les pubs. Essentiel : mémoriser ce choix.</p>
+    <p class="consent-bar__more"><a href="cookies.html" data-i18n="cookieMore">Politique de témoins</a></p>
+    <div class="consent-bar__actions">
+      <button type="button" class="btn btn-ghost" data-consent="refuse" data-i18n="cookieRefuse">Refuser</button>
+      <button type="button" class="btn btn-primary" data-consent="accept" data-i18n="cookieAccept">Accepter</button>
+    </div>
   </div>
 
   <!-- Sticky total -->
@@ -289,6 +300,7 @@
     </div>
   </div>
 
+  <script src="consent.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

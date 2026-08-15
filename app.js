@@ -60,6 +60,17 @@
       summaryStand: "Meuble",
       yes: "Oui",
       no: "Non",
+      collectNotice: "Numéro et choix d’installation : pour vous rappeler au sujet de cette estimation. Envoi par courriel (hors Québec). Accès ou correction : rideconstruction1@gmail.com.",
+      privacyConsent: "J’accepte d’être contacté au sujet de cette estimation.",
+      privacyLink: "Politique de confidentialité",
+      navPrivacy: "Confidentialité",
+      navCookies: "Témoins",
+      navLegal: "Mentions",
+      cookieBanner: "On charge un pixel Meta seulement si vous acceptez, pour mesurer les pubs. Essentiel : mémoriser ce choix.",
+      cookieMore: "Politique de témoins",
+      cookieRefuse: "Refuser",
+      cookieAccept: "Accepter",
+      privacyError: "Cochez la case pour envoyer la demande.",
       sizeLabels: {
         "42": "< 42\" (50 $)",
         "43-54": "43–54\" (60 $)",
@@ -128,6 +139,17 @@
       summaryStand: "Stand",
       yes: "Yes",
       no: "No",
+      collectNotice: "Phone and install choices: to call you back about this estimate. Sent by email (outside Quebec). Access or correction: rideconstruction1@gmail.com.",
+      privacyConsent: "I agree to be contacted about this estimate.",
+      privacyLink: "Privacy policy",
+      navPrivacy: "Privacy",
+      navCookies: "Cookies",
+      navLegal: "Legal",
+      cookieBanner: "We load a Meta pixel only if you accept, to measure ads. Essential: remember this choice.",
+      cookieMore: "Cookie policy",
+      cookieRefuse: "Refuse",
+      cookieAccept: "Accept",
+      privacyError: "Check the box to send the request.",
       sizeLabels: {
         "42": "< 42\" ($50)",
         "43-54": "43–54\" ($60)",
@@ -164,6 +186,9 @@
   const submitBtn = document.getElementById("submit-btn");
   const submitError = document.getElementById("submit-error");
   const langButtons = document.querySelectorAll(".lang-btn");
+  const privacyConsent = document.getElementById("privacy-consent");
+  const privacyBox = document.getElementById("privacy-box");
+  const privacyError = document.getElementById("privacy-error");
   let sending = false;
 
   function t(key) {
@@ -264,6 +289,15 @@
       ok = false;
     } else {
       sizeError.hidden = true;
+    }
+
+    if (privacyConsent && !privacyConsent.checked) {
+      if (privacyBox) privacyBox.classList.add("is-invalid");
+      if (privacyError) privacyError.hidden = false;
+      ok = false;
+    } else {
+      if (privacyBox) privacyBox.classList.remove("is-invalid");
+      if (privacyError) privacyError.hidden = true;
     }
 
     return ok;
@@ -391,7 +425,11 @@
     document.body.classList.add("is-confirming");
     window.scrollTo(0, 0);
 
-    if (typeof fbq === "function") {
+    if (
+      window.rcConsent &&
+      window.rcConsent.allowsMarketing() &&
+      typeof fbq === "function"
+    ) {
       fbq("track", "Lead", {
         content_name: "Installation TV Montreal",
         currency: "CAD",
@@ -418,6 +456,10 @@
       phoneError.hidden = true;
       phoneInput.classList.remove("is-invalid");
     }
+    if (e.target === privacyConsent) {
+      if (privacyBox) privacyBox.classList.toggle("is-invalid", !privacyConsent.checked);
+      if (privacyError) privacyError.hidden = privacyConsent.checked;
+    }
   });
 
   form.addEventListener("submit", function (e) {
@@ -430,6 +472,8 @@
       } else if (!selectedRadio("size")) {
         const firstSize = form.querySelector('input[name="size"]');
         if (firstSize) firstSize.focus();
+      } else if (privacyConsent && !privacyConsent.checked) {
+        privacyConsent.focus();
       }
       return;
     }
