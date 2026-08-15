@@ -82,9 +82,8 @@ body::before {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(120deg, rgba(26, 20, 35, 0.82) 0%, rgba(55, 37, 73, 0.55) 55%, rgba(119, 76, 96, 0.5) 100%),
-    url("https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=1400&q=80")
-      center / cover no-repeat;
+    linear-gradient(180deg, rgba(26, 20, 35, 0.42) 0%, rgba(26, 20, 35, 0.28) 40%, rgba(26, 20, 35, 0.72) 100%),
+    url("images/tv.png") center 40% / cover no-repeat;
   transform: scale(1.02);
   animation: brandDrift 18s ease-in-out infinite alternate;
   filter: none;
