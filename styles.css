@@ -451,6 +451,11 @@ img.extra__art {
   display: block;
 }
 
+img.extra__art--cover {
+  object-fit: cover;
+  object-position: center 40%;
+}
+
 .option-tile__title {
   font-weight: 700;
   font-size: 0.98rem;
@@ -529,10 +534,6 @@ img.extra__art {
   width: 64px;
   height: 64px;
   border-radius: 12px;
-}
-
-.extra__art--led {
-  background: radial-gradient(circle at 50% 85%, #5ec8ff, #7c4dff 45%, #1a237e 78%);
 }
 
 .extra__copy {
