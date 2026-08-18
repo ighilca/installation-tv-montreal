@@ -1,15 +1,20 @@
 /**
- * Consentement publicité / pixel Meta — Loi 25
+ * Consentement mesure / pub (GA4 + pixel Meta) — Loi 25
  */
 (function () {
   "use strict";
 
   var KEY = "rc_loi25_consent";
+  var VERSION = 2;
   var PIXEL_ID = "1434401558131877";
+  var GA_ID = "G-C8WK5FSGHN";
+  var gaReady = false;
 
   function readConsent() {
     try {
-      return JSON.parse(localStorage.getItem(KEY) || "null");
+      var c = JSON.parse(localStorage.getItem(KEY) || "null");
+      if (!c || c.v !== VERSION) return null;
+      return c;
     } catch (e) {
       return null;
     }
@@ -18,7 +23,7 @@
   function writeConsent(marketing) {
     localStorage.setItem(
       KEY,
-      JSON.stringify({ marketing: !!marketing, ts: Date.now() })
+      JSON.stringify({ v: VERSION, marketing: !!marketing, ts: Date.now() })
     );
   }
 
@@ -44,6 +49,51 @@
     window.fbq("track", "PageView");
   }
 
+  function loadGA() {
+    if (gaReady) {
+      window.gtag("consent", "update", {
+        analytics_storage: "granted",
+      });
+      return;
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag =
+      window.gtag ||
+      function () {
+        window.dataLayer.push(arguments);
+      };
+
+    window.gtag("consent", "default", {
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      analytics_storage: "granted",
+      functionality_storage: "granted",
+      personalization_storage: "denied",
+      security_storage: "granted",
+    });
+
+    var script = document.createElement("script");
+    script.async = true;
+    script.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+    document.head.appendChild(script);
+
+    window.gtag("js", new Date());
+    window.gtag("config", GA_ID);
+    gaReady = true;
+  }
+
+  function pauseGA() {
+    if (typeof window.gtag !== "function") return;
+    window.gtag("consent", "update", {
+      analytics_storage: "denied",
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+    });
+  }
+
   function hideBar() {
     var bar = document.getElementById("consent-bar");
     if (bar) bar.hidden = true;
@@ -61,17 +111,20 @@
     },
     accept: function () {
       writeConsent(true);
+      loadGA();
       loadPixel();
       hideBar();
     },
     refuse: function () {
       writeConsent(false);
+      pauseGA();
       hideBar();
     },
   };
 
   var existing = readConsent();
   if (existing && existing.marketing) {
+    loadGA();
     loadPixel();
   } else if (!existing) {
     if (document.readyState === "loading") {

@@ -66,7 +66,7 @@
       navPrivacy: "Confidentialité",
       navCookies: "Témoins",
       navLegal: "Mentions",
-      cookieBanner: "On charge un pixel Meta seulement si vous acceptez, pour mesurer les pubs. Essentiel : mémoriser ce choix.",
+      cookieBanner: "On charge Google Analytics et un pixel Meta seulement si vous acceptez, pour mesurer les visites et les pubs. Essentiel : mémoriser ce choix.",
       cookieMore: "Politique de témoins",
       cookieRefuse: "Refuser",
       cookieAccept: "Accepter",
@@ -145,7 +145,7 @@
       navPrivacy: "Privacy",
       navCookies: "Cookies",
       navLegal: "Legal",
-      cookieBanner: "We load a Meta pixel only if you accept, to measure ads. Essential: remember this choice.",
+      cookieBanner: "We load Google Analytics and a Meta pixel only if you accept, to measure visits and ads. Essential: remember this choice.",
       cookieMore: "Cookie policy",
       cookieRefuse: "Refuse",
       cookieAccept: "Accept",
@@ -197,9 +197,13 @@
 
   function applyLanguage(next) {
     lang = next;
-    document.documentElement.lang = next;
-    document.documentElement.classList.remove("lang-fr", "lang-en");
-    document.documentElement.classList.add("lang-" + next);
+    if (window.rcLang) {
+      window.rcLang.save(next);
+    } else {
+      document.documentElement.lang = next;
+      document.documentElement.classList.remove("lang-fr", "lang-en");
+      document.documentElement.classList.add("lang-" + next);
+    }
 
     langButtons.forEach(function (btn) {
       const active = btn.getAttribute("data-lang") === next;
@@ -425,16 +429,20 @@
     document.body.classList.add("is-confirming");
     window.scrollTo(0, 0);
 
-    if (
-      window.rcConsent &&
-      window.rcConsent.allowsMarketing() &&
-      typeof fbq === "function"
-    ) {
-      fbq("track", "Lead", {
-        content_name: "Installation TV Montreal",
-        currency: "CAD",
-        value: computeTotal(),
-      });
+    if (window.rcConsent && window.rcConsent.allowsMarketing()) {
+      if (typeof fbq === "function") {
+        fbq("track", "Lead", {
+          content_name: "Installation TV Montreal",
+          currency: "CAD",
+          value: computeTotal(),
+        });
+      }
+      if (typeof gtag === "function") {
+        gtag("event", "generate_lead", {
+          currency: "CAD",
+          value: computeTotal(),
+        });
+      }
     }
   }
 
@@ -499,6 +507,6 @@
 
   editBtn.addEventListener("click", hideConfirm);
 
-  applyLanguage("fr");
+  applyLanguage(window.rcLang ? window.rcLang.detect() : "fr");
   updateTotal();
 })();
