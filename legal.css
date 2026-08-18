@@ -18,8 +18,13 @@
   text-decoration: none;
 }
 
-.legal-top a:hover {
-  color: var(--dusty-mauve);
+.legal-body .lang-btn {
+  color: var(--ink-soft);
+}
+
+.legal-body .lang-btn.is-active {
+  background: var(--midnight-violet);
+  color: #fff;
 }
 
 .legal-wrap {
@@ -75,6 +80,12 @@ html.lang-fr .legal-en {
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.35rem 1rem;
+}
+
+.site-footer__nap {
+  margin: 0 0 0.75rem;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
 }
 
 .site-footer a {

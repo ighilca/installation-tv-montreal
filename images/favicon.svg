@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Installation TV">
+  <rect width="32" height="32" rx="7" fill="#1a1423"/>
+  <rect x="4.5" y="7.5" width="23" height="15" rx="2.4" fill="#eacdc2"/>
+  <rect x="6.5" y="9.5" width="19" height="11" rx="1.2" fill="#372549"/>
+  <rect x="15" y="22.5" width="2" height="2.5" fill="#eacdc2"/>
+  <rect x="11" y="25" width="10" height="2" rx="1" fill="#eacdc2"/>
+</svg>

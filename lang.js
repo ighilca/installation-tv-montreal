@@ -1,10 +1,21 @@
 /**
- * Langue : choix enregistré, sinon langue du navigateur.
+ * Langue : l’URL du formulaire (/ vs /en/) prime.
+ * Pages légales : choix enregistré, sinon langue du navigateur.
  */
 (function (w) {
   "use strict";
 
   var KEY = "rc_lang";
+
+  function pathLang() {
+    var path = String(w.location.pathname || "/").toLowerCase();
+    if (path.length > 1 && path.charAt(path.length - 1) === "/") {
+      path = path.slice(0, -1);
+    }
+    if (path === "/en" || path.indexOf("/en/") === 0) return "en";
+    if (path === "" || path === "/" || path === "/index.html") return "fr";
+    return null;
+  }
 
   function fromBrowser() {
     var list = w.navigator.languages || [w.navigator.language || "fr"];
@@ -17,6 +28,8 @@
   }
 
   function detect() {
+    var fromUrl = pathLang();
+    if (fromUrl) return fromUrl;
     try {
       var saved = w.localStorage.getItem(KEY);
       if (saved === "en" || saved === "fr") return saved;
@@ -45,6 +58,7 @@
     detect: detect,
     paint: paint,
     save: save,
+    pathLang: pathLang,
   };
 
   paint(detect());

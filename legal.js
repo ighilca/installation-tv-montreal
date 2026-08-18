@@ -16,6 +16,8 @@
       btn.classList.toggle("is-active", active);
       btn.setAttribute("aria-pressed", active ? "true" : "false");
     });
+    var home = document.querySelector(".legal-top a");
+    if (home) home.setAttribute("href", lang === "en" ? "/en" : "/");
   }
 
   buttons.forEach(function (btn) {

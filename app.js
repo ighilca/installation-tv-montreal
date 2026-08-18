@@ -71,6 +71,16 @@
       cookieRefuse: "Refuser",
       cookieAccept: "Accepter",
       privacyError: "Cochez la case pour envoyer la demande.",
+      metaTitle: "Installation TV Montréal | Pose murale dès 50 $",
+      metaDescription: "Pose de TV au mur à Montréal dès 50 $. Support, cache-câbles, LED et meuble. Le prix s’affiche tout de suite. On vous rappelle pour confirmer.",
+      seoHeading: "Pose de TV murale à Montréal",
+      seoBody: "Ride Construction installe votre téléviseur au mur à Montréal et dans les environs. Support fixe ou articulé, cache-câbles, bande LED, meuble. Le total s’affiche tout de suite. On vous rappelle pour confirmer le créneau.",
+      altFixed: "Support mural fixe pour téléviseur",
+      altMobile: "Support mural articulé pour téléviseur",
+      altCable: "Goulotte cache-câbles pour fils de télévision",
+      altLed: "Bande LED derrière un téléviseur mural",
+      altStandWhite: "Meuble TV flottant blanc 75 pouces",
+      altStandBlack: "Meuble TV flottant noir 75 pouces",
       sizeLabels: {
         "42": "< 42\" (50 $)",
         "43-54": "43–54\" (60 $)",
@@ -150,6 +160,16 @@
       cookieRefuse: "Refuse",
       cookieAccept: "Accept",
       privacyError: "Check the box to send the request.",
+      metaTitle: "TV Installation Montreal | Wall mount from $50",
+      metaDescription: "TV wall mounting in Montreal from $50. Mounts, cable cover, LED and stand. The price updates as you choose. We’ll call to confirm.",
+      seoHeading: "TV wall mounting in Montreal",
+      seoBody: "Ride Construction mounts your TV on the wall in Montreal and nearby. Fixed or full-motion mount, cable cover, LED strip, stand. The total updates as you choose. We’ll call to confirm your time slot.",
+      altFixed: "Fixed wall mount for a television",
+      altMobile: "Full-motion wall mount for a television",
+      altCable: "Cable cover raceway for TV wires",
+      altLed: "LED strip behind a wall-mounted TV",
+      altStandWhite: "White floating 75-inch TV stand",
+      altStandBlack: "Black floating 75-inch TV stand",
       sizeLabels: {
         "42": "< 42\" ($50)",
         "43-54": "43–54\" ($60)",
@@ -218,7 +238,16 @@
       }
     });
 
-    document.title = t("brandName") + " " + t("title");
+    document.querySelectorAll("[data-i18n-alt]").forEach(function (el) {
+      const key = el.getAttribute("data-i18n-alt");
+      if (i18n[lang][key] != null) {
+        el.setAttribute("alt", i18n[lang][key]);
+      }
+    });
+
+    document.title = t("metaTitle");
+    var desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute("content", t("metaDescription"));
     updateWarning();
   }
 
@@ -452,6 +481,7 @@
   }
 
   langButtons.forEach(function (btn) {
+    if (btn.tagName === "A") return;
     btn.addEventListener("click", function () {
       applyLanguage(btn.getAttribute("data-lang"));
       if (!sending) submitBtn.textContent = t("submit");

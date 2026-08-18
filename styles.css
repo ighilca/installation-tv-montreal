@@ -104,7 +104,12 @@ body::before {
   padding: 1.25rem 1.25rem 1.75rem;
 }
 
+.brand__heading {
+  margin: 0 0 0.75rem;
+}
+
 .brand__name {
+  display: block;
   margin: 0 0 0.15rem;
   font-family: var(--display);
   font-weight: 700;
@@ -113,8 +118,8 @@ body::before {
   line-height: 1.15;
 }
 
-.brand__copy h1 {
-  margin: 0 0 0.75rem;
+.brand__city {
+  display: block;
   font-family: var(--display);
   font-weight: 800;
   font-size: clamp(2rem, 8vw, 2.75rem);
@@ -156,6 +161,7 @@ body::before {
 
 .lang-btn {
   appearance: none;
+  display: inline-block;
   border: 0;
   background: transparent;
   color: rgba(255, 255, 255, 0.75);
@@ -166,6 +172,7 @@ body::before {
   padding: 0.4rem 0.7rem;
   border-radius: 8px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .lang-btn.is-active {
@@ -205,6 +212,27 @@ body::before {
   font-size: 1.05rem;
   color: var(--ink-soft);
   max-width: 28rem;
+}
+
+.seo-note {
+  margin: 0.5rem 0 0;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--line);
+  max-width: 36rem;
+}
+
+.seo-note h2 {
+  margin: 0 0 0.5rem;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+
+.seo-note p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
 }
 
 /* Steps — open layout, no white Google cards */
