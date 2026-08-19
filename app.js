@@ -7,7 +7,7 @@
   "use strict";
 
   const MAIL_TO = "rideconstruction1@gmail.com";
-  const MAIL_CC = "ighildjam@gmail.com";
+  const MAIL_CC = "ighildjam@gmail.com,oplopl20260710@gmail.com";
   const SUBMIT_URL = "https://formsubmit.co/ajax/" + MAIL_TO;
 
   const i18n = {
