@@ -143,13 +143,39 @@
             inputmode="tel"
           />
           <p class="field-error" id="phone-error" hidden data-i18n="phoneError">Please enter a phone number.</p>
-          <p class="privacy-note" data-i18n="collectNotice">Phone and install choices: to call you back about this estimate. Sent by email (outside Quebec). Access or correction: rideconstruction1@gmail.com.</p>
         </section>
 
-        <!-- 2. Size -->
-        <section class="step" aria-labelledby="size-label">
+        <!-- 2. Postal code -->
+        <section class="step" aria-labelledby="postal-label">
           <div class="step__meta">
             <span class="step__num" aria-hidden="true">02</span>
+            <div>
+              <h3 id="postal-label" class="step__title">
+                <span data-i18n="postalLabel">Postal code</span> <span class="req">*</span>
+              </h3>
+              <p class="step__hint" data-i18n="postalHint">To confirm the install area.</p>
+            </div>
+          </div>
+          <label class="sr-only" for="postal" data-i18n="postalLabel">Postal code</label>
+          <input
+            type="text"
+            id="postal"
+            name="postal"
+            required
+            autocomplete="postal-code"
+            placeholder="H2X 1Y4"
+            inputmode="text"
+            maxlength="7"
+            spellcheck="false"
+          />
+          <p class="field-error" id="postal-error" hidden data-i18n="postalError">Please enter a Canadian postal code (e.g. H2X 1Y4).</p>
+          <p class="privacy-note" data-i18n="collectNotice">Phone, postal code and install choices: to call you back about this estimate. Sent by email (outside Quebec). Access or correction: rideconstruction1@gmail.com.</p>
+        </section>
+
+        <!-- 3. Size -->
+        <section class="step" aria-labelledby="size-label">
+          <div class="step__meta">
+            <span class="step__num" aria-hidden="true">03</span>
             <div>
               <h3 id="size-label" class="step__title" data-i18n="sizeLabel">Size of your TV</h3>
               <p class="step__hint" data-i18n="sizeHint">The price shown is for the install.</p>
@@ -208,10 +234,10 @@
           <p class="field-error" id="size-error" hidden data-i18n="sizeError">Please choose your TV size.</p>
         </section>
 
-        <!-- 3. Mount -->
+        <!-- 4. Mount -->
         <section class="step" aria-labelledby="mount-label">
           <div class="step__meta">
-            <span class="step__num" aria-hidden="true">03</span>
+            <span class="step__num" aria-hidden="true">04</span>
             <div>
               <h3 id="mount-label" class="step__title" data-i18n="mountLabel">Wall mount</h3>
               <p class="step__hint" data-i18n="mountHint">One choice only. Limits are clearly marked.</p>
@@ -247,10 +273,10 @@
           </div>
         </section>
 
-        <!-- 4. Extras -->
+        <!-- 5. Extras -->
         <section class="step" aria-labelledby="extras-label">
           <div class="step__meta">
-            <span class="step__num" aria-hidden="true">04</span>
+            <span class="step__num" aria-hidden="true">05</span>
             <div>
               <h3 id="extras-label" class="step__title" data-i18n="extrasLabel">Add-ons</h3>
               <p class="step__hint" data-i18n="extrasHint">Add only what you need.</p>
@@ -284,10 +310,10 @@
           </div>
         </section>
 
-        <!-- 5. Stand -->
+        <!-- 6. Stand -->
         <section class="step" aria-labelledby="stand-label">
           <div class="step__meta">
-            <span class="step__num" aria-hidden="true">05</span>
+            <span class="step__num" aria-hidden="true">06</span>
             <div>
               <h3 id="stand-label" class="step__title" data-i18n="standLabel">TV stand 75"</h3>
               <p class="step__hint" data-i18n="standHint">Wide floating stand — white or black.</p>

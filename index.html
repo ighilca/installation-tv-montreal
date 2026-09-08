@@ -143,13 +143,39 @@
             inputmode="tel"
           />
           <p class="field-error" id="phone-error" hidden data-i18n="phoneError">Veuillez entrer un numéro de téléphone.</p>
-          <p class="privacy-note" data-i18n="collectNotice">Numéro et choix d’installation : pour vous rappeler au sujet de cette estimation. Envoi par courriel (hors Québec). Accès ou correction : rideconstruction1@gmail.com.</p>
         </section>
 
-        <!-- 2. Size -->
-        <section class="step" aria-labelledby="size-label">
+        <!-- 2. Postal code -->
+        <section class="step" aria-labelledby="postal-label">
           <div class="step__meta">
             <span class="step__num" aria-hidden="true">02</span>
+            <div>
+              <h3 id="postal-label" class="step__title">
+                <span data-i18n="postalLabel">Code postal</span> <span class="req">*</span>
+              </h3>
+              <p class="step__hint" data-i18n="postalHint">Pour confirmer le secteur de l’installation.</p>
+            </div>
+          </div>
+          <label class="sr-only" for="postal" data-i18n="postalLabel">Code postal</label>
+          <input
+            type="text"
+            id="postal"
+            name="postal"
+            required
+            autocomplete="postal-code"
+            placeholder="H2X 1Y4"
+            inputmode="text"
+            maxlength="7"
+            spellcheck="false"
+          />
+          <p class="field-error" id="postal-error" hidden data-i18n="postalError">Veuillez entrer un code postal canadien (ex. H2X 1Y4).</p>
+          <p class="privacy-note" data-i18n="collectNotice">Numéro, code postal et choix d’installation : pour vous rappeler au sujet de cette estimation. Envoi par courriel (hors Québec). Accès ou correction : rideconstruction1@gmail.com.</p>
+        </section>
+
+        <!-- 3. Size -->
+        <section class="step" aria-labelledby="size-label">
+          <div class="step__meta">
+            <span class="step__num" aria-hidden="true">03</span>
             <div>
               <h3 id="size-label" class="step__title" data-i18n="sizeLabel">Grandeur de votre TV</h3>
               <p class="step__hint" data-i18n="sizeHint">Le prix affiché est celui de la pose.</p>
@@ -208,10 +234,10 @@
           <p class="field-error" id="size-error" hidden data-i18n="sizeError">Veuillez choisir la taille de votre TV.</p>
         </section>
 
-        <!-- 3. Mount -->
+        <!-- 4. Mount -->
         <section class="step" aria-labelledby="mount-label">
           <div class="step__meta">
-            <span class="step__num" aria-hidden="true">03</span>
+            <span class="step__num" aria-hidden="true">04</span>
             <div>
               <h3 id="mount-label" class="step__title" data-i18n="mountLabel">Support mural</h3>
               <p class="step__hint" data-i18n="mountHint">Un seul choix. Les limites sont indiquées clairement.</p>
@@ -247,10 +273,10 @@
           </div>
         </section>
 
-        <!-- 4. Extras -->
+        <!-- 5. Extras -->
         <section class="step" aria-labelledby="extras-label">
           <div class="step__meta">
-            <span class="step__num" aria-hidden="true">04</span>
+            <span class="step__num" aria-hidden="true">05</span>
             <div>
               <h3 id="extras-label" class="step__title" data-i18n="extrasLabel">Options</h3>
               <p class="step__hint" data-i18n="extrasHint">Ajoutez seulement ce dont vous avez besoin.</p>
@@ -284,10 +310,10 @@
           </div>
         </section>
 
-        <!-- 5. Stand -->
+        <!-- 6. Stand -->
         <section class="step" aria-labelledby="stand-label">
           <div class="step__meta">
-            <span class="step__num" aria-hidden="true">05</span>
+            <span class="step__num" aria-hidden="true">06</span>
             <div>
               <h3 id="stand-label" class="step__title" data-i18n="standLabel">Meuble TV 75"</h3>
               <p class="step__hint" data-i18n="standHint">Meuble flottant large — blanc ou noir.</p>

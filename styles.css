@@ -282,8 +282,9 @@ body::before {
   color: var(--dusty-mauve);
 }
 
-/* Phone */
-input[type="tel"] {
+/* Phone / postal */
+input[type="tel"],
+input[name="postal"] {
   width: 100%;
   max-width: 22rem;
   padding: 1rem 1.15rem;
@@ -299,18 +300,27 @@ input[type="tel"] {
   transition: box-shadow 0.2s, background 0.2s, transform 0.15s;
 }
 
-input[type="tel"]::placeholder {
-  color: #8a9aa5;
-  font-weight: 500;
+input[name="postal"] {
+  text-transform: uppercase;
+  max-width: 12rem;
 }
 
-input[type="tel"]:focus {
+input[type="tel"]::placeholder,
+input[name="postal"]::placeholder {
+  color: #8a9aa5;
+  font-weight: 500;
+  text-transform: none;
+}
+
+input[type="tel"]:focus,
+input[name="postal"]:focus {
   outline: none;
   background: #fff;
   box-shadow: 0 0 0 3px var(--teal-soft), inset 0 0 0 1.5px var(--teal);
 }
 
-input[type="tel"].is-invalid {
+input[type="tel"].is-invalid,
+input[name="postal"].is-invalid {
   box-shadow: 0 0 0 3px #e8e8e8, inset 0 0 0 1.5px var(--error);
 }
 
