@@ -145,31 +145,29 @@
           <p class="field-error" id="phone-error" hidden data-i18n="phoneError">Veuillez entrer un numéro de téléphone.</p>
         </section>
 
-        <!-- 2. Postal code -->
-        <section class="step" aria-labelledby="postal-label">
+        <!-- 2. Address -->
+        <section class="step" aria-labelledby="address-label">
           <div class="step__meta">
             <span class="step__num" aria-hidden="true">02</span>
             <div>
-              <h3 id="postal-label" class="step__title">
-                <span data-i18n="postalLabel">Code postal</span> <span class="req">*</span>
+              <h3 id="address-label" class="step__title">
+                <span data-i18n="addressLabel">Adresse complète</span> <span class="req">*</span>
               </h3>
-              <p class="step__hint" data-i18n="postalHint">Pour confirmer le secteur de l’installation.</p>
+              <p class="step__hint" data-i18n="addressHint">Rue, appartement, ville et code postal — pour se rendre chez vous.</p>
             </div>
           </div>
-          <label class="sr-only" for="postal" data-i18n="postalLabel">Code postal</label>
-          <input
-            type="text"
-            id="postal"
-            name="postal"
+          <label class="sr-only" for="address" data-i18n="addressLabel">Adresse complète</label>
+          <textarea
+            id="address"
+            name="address"
             required
-            autocomplete="postal-code"
-            placeholder="H2X 1Y4"
-            inputmode="text"
-            maxlength="7"
-            spellcheck="false"
-          />
-          <p class="field-error" id="postal-error" hidden data-i18n="postalError">Veuillez entrer un code postal canadien (ex. H2X 1Y4).</p>
-          <p class="privacy-note" data-i18n="collectNotice">Numéro, code postal et choix d’installation : pour vous rappeler au sujet de cette estimation. Envoi par courriel (hors Québec). Accès ou correction : rideconstruction1@gmail.com.</p>
+            autocomplete="street-address"
+            rows="3"
+            placeholder="123 rue Example, apt. 4, Montréal, QC H2X 1Y2"
+            data-i18n-placeholder="addressPlaceholder"
+          ></textarea>
+          <p class="field-error" id="address-error" hidden data-i18n="addressError">Veuillez entrer votre adresse complète.</p>
+          <p class="privacy-note" data-i18n="collectNotice">Numéro, adresse et choix d’installation : pour vous rappeler et préparer la visite. Envoi par courriel (hors Québec). Accès ou correction : rideconstruction1@gmail.com.</p>
         </section>
 
         <!-- 3. Size -->
@@ -234,7 +232,7 @@
           <p class="field-error" id="size-error" hidden data-i18n="sizeError">Veuillez choisir la taille de votre TV.</p>
         </section>
 
-        <!-- 4. Mount -->
+        <!-- 3. Mount -->
         <section class="step" aria-labelledby="mount-label">
           <div class="step__meta">
             <span class="step__num" aria-hidden="true">04</span>
@@ -273,7 +271,7 @@
           </div>
         </section>
 
-        <!-- 5. Extras -->
+        <!-- 4. Extras -->
         <section class="step" aria-labelledby="extras-label">
           <div class="step__meta">
             <span class="step__num" aria-hidden="true">05</span>
@@ -310,7 +308,7 @@
           </div>
         </section>
 
-        <!-- 6. Stand -->
+        <!-- 5. Stand -->
         <section class="step" aria-labelledby="stand-label">
           <div class="step__meta">
             <span class="step__num" aria-hidden="true">06</span>

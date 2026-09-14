@@ -282,9 +282,9 @@ body::before {
   color: var(--dusty-mauve);
 }
 
-/* Phone / postal */
+/* Phone / address */
 input[type="tel"],
-input[name="postal"] {
+textarea {
   width: 100%;
   max-width: 22rem;
   padding: 1rem 1.15rem;
@@ -300,27 +300,29 @@ input[name="postal"] {
   transition: box-shadow 0.2s, background 0.2s, transform 0.15s;
 }
 
-input[name="postal"] {
-  text-transform: uppercase;
-  max-width: 12rem;
+textarea {
+  max-width: 28rem;
+  min-height: 5.5rem;
+  resize: vertical;
+  line-height: 1.4;
+  font-size: 1rem;
 }
 
 input[type="tel"]::placeholder,
-input[name="postal"]::placeholder {
+textarea::placeholder {
   color: #8a9aa5;
   font-weight: 500;
-  text-transform: none;
 }
 
 input[type="tel"]:focus,
-input[name="postal"]:focus {
+textarea:focus {
   outline: none;
   background: #fff;
   box-shadow: 0 0 0 3px var(--teal-soft), inset 0 0 0 1.5px var(--teal);
 }
 
 input[type="tel"].is-invalid,
-input[name="postal"].is-invalid {
+textarea.is-invalid {
   box-shadow: 0 0 0 3px #e8e8e8, inset 0 0 0 1.5px var(--error);
 }
 

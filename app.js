@@ -21,9 +21,10 @@
       phoneLabel: "Téléphone",
       phoneHint: "On vous contacte pour confirmer le créneau.",
       phoneError: "Veuillez entrer un numéro de téléphone.",
-      postalLabel: "Code postal",
-      postalHint: "Pour confirmer le secteur de l’installation.",
-      postalError: "Veuillez entrer un code postal canadien (ex. H2X 1Y4).",
+      addressLabel: "Adresse complète",
+      addressHint: "Rue, appartement, ville et code postal — pour se rendre chez vous.",
+      addressError: "Veuillez entrer votre adresse complète.",
+      addressPlaceholder: "123 rue Example, apt. 4, Montréal, QC H2X 1Y2",
       sizeLabel: "Grandeur de votre TV",
       sizeHint: "Le prix affiché est celui de la pose.",
       sizeError: "Veuillez choisir la taille de votre TV.",
@@ -56,7 +57,7 @@
       warnFixed: "Le support fixe est prévu pour les TV jusqu’à 80\". Votre taille sélectionnée dépasse cette limite.",
       warnMobile: "Le support articulé est prévu pour les TV jusqu’à 55\". Votre taille sélectionnée dépasse cette limite.",
       summaryPhone: "Téléphone",
-      summaryPostal: "Code postal",
+      summaryAddress: "Adresse",
       summarySize: "Taille TV",
       summaryMount: "Support",
       summaryCable: "Cache-câbles",
@@ -64,7 +65,7 @@
       summaryStand: "Meuble",
       yes: "Oui",
       no: "Non",
-      collectNotice: "Numéro, code postal et choix d’installation : pour vous rappeler au sujet de cette estimation. Envoi par courriel (hors Québec). Accès ou correction : rideconstruction1@gmail.com.",
+      collectNotice: "Numéro, adresse et choix d’installation : pour vous rappeler et préparer la visite. Envoi par courriel (hors Québec). Accès ou correction : rideconstruction1@gmail.com.",
       privacyConsent: "J’accepte d’être contacté au sujet de cette estimation.",
       privacyLink: "Politique de confidentialité",
       navPrivacy: "Confidentialité",
@@ -114,9 +115,10 @@
       phoneLabel: "Phone",
       phoneHint: "We’ll call to confirm your time slot.",
       phoneError: "Please enter a phone number.",
-      postalLabel: "Postal code",
-      postalHint: "To confirm the install area.",
-      postalError: "Please enter a Canadian postal code (e.g. H2X 1Y4).",
+      addressLabel: "Full address",
+      addressHint: "Street, unit, city and postal code — so we can come to you.",
+      addressError: "Please enter your full address.",
+      addressPlaceholder: "123 Example St, apt. 4, Montreal, QC H2X 1Y2",
       sizeLabel: "Size of your TV",
       sizeHint: "The price shown is for the install.",
       sizeError: "Please choose your TV size.",
@@ -149,7 +151,7 @@
       warnFixed: "The fixed mount is rated for TVs up to 80\". Your selected size exceeds that limit.",
       warnMobile: "The full-motion mount is rated for TVs up to 55\". Your selected size exceeds that limit.",
       summaryPhone: "Phone",
-      summaryPostal: "Postal code",
+      summaryAddress: "Address",
       summarySize: "TV size",
       summaryMount: "Mount",
       summaryCable: "Cable cover",
@@ -157,7 +159,7 @@
       summaryStand: "Stand",
       yes: "Yes",
       no: "No",
-      collectNotice: "Phone, postal code and install choices: to call you back about this estimate. Sent by email (outside Quebec). Access or correction: rideconstruction1@gmail.com.",
+      collectNotice: "Phone, address and install choices: to call you back and prepare the visit. Sent by email (outside Quebec). Access or correction: rideconstruction1@gmail.com.",
       privacyConsent: "I agree to be contacted about this estimate.",
       privacyLink: "Privacy policy",
       navPrivacy: "Privacy",
@@ -210,8 +212,8 @@
   const editBtn = document.getElementById("edit-btn");
   const phoneInput = document.getElementById("phone");
   const phoneError = document.getElementById("phone-error");
-  const postalInput = document.getElementById("postal");
-  const postalError = document.getElementById("postal-error");
+  const addressInput = document.getElementById("address");
+  const addressError = document.getElementById("address-error");
   const sizeError = document.getElementById("size-error");
   const submitBtn = document.getElementById("submit-btn");
   const submitError = document.getElementById("submit-error");
@@ -252,6 +254,13 @@
       const key = el.getAttribute("data-i18n-alt");
       if (i18n[lang][key] != null) {
         el.setAttribute("alt", i18n[lang][key]);
+      }
+    });
+
+    document.querySelectorAll("[data-i18n-placeholder]").forEach(function (el) {
+      const key = el.getAttribute("data-i18n-placeholder");
+      if (i18n[lang][key] != null) {
+        el.setAttribute("placeholder", i18n[lang][key]);
       }
     });
 
@@ -315,27 +324,6 @@
     warningEl.textContent = mountVal === "mobile" ? t("warnMobile") : t("warnFixed");
   }
 
-  function normalizePostal(value) {
-    return String(value || "")
-      .trim()
-      .toUpperCase()
-      .replace(/\s+/g, "");
-  }
-
-  function formatPostal(value) {
-    const compact = normalizePostal(value);
-    if (compact.length === 6) {
-      return compact.slice(0, 3) + " " + compact.slice(3);
-    }
-    return String(value || "").trim().toUpperCase();
-  }
-
-  function isValidPostal(value) {
-    return /^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z]\d[ABCEGHJ-NPRSTV-Z]\d$/.test(
-      normalizePostal(value)
-    );
-  }
-
   function validate() {
     let ok = true;
 
@@ -348,14 +336,15 @@
       phoneInput.classList.remove("is-invalid");
     }
 
-    if (!isValidPostal(postalInput.value)) {
-      postalError.hidden = false;
-      postalInput.classList.add("is-invalid");
-      ok = false;
-    } else {
-      postalError.hidden = true;
-      postalInput.classList.remove("is-invalid");
-      postalInput.value = formatPostal(postalInput.value);
+    if (addressInput) {
+      if (!addressInput.value.trim()) {
+        if (addressError) addressError.hidden = false;
+        addressInput.classList.add("is-invalid");
+        ok = false;
+      } else {
+        if (addressError) addressError.hidden = true;
+        addressInput.classList.remove("is-invalid");
+      }
     }
 
     if (!selectedRadio("size")) {
@@ -387,7 +376,10 @@
 
     const rows = [
       { label: dict.summaryPhone, value: phoneInput.value.trim() },
-      { label: dict.summaryPostal, value: formatPostal(postalInput.value) },
+      {
+        label: dict.summaryAddress,
+        value: addressInput ? addressInput.value.trim() : "—",
+      },
       {
         label: dict.summarySize,
         value: size ? dict.sizeLabels[size.value] : "—",
@@ -448,7 +440,7 @@
       _cc: MAIL_CC,
       _captcha: "false",
       "Téléphone / Phone": phoneInput.value.trim(),
-      "Code postal / Postal code": formatPostal(postalInput.value),
+      "Adresse / Address": addressInput ? addressInput.value.trim() : "—",
       "Taille TV / Size": size ? dict.sizeLabels[size.value] : "—",
       "Support / Mount": mount ? dict.mountLabels[mount.value] : "—",
       "Cache-câbles / Cable cover": cable ? dict.yes + " (+30 $)" : dict.no,
@@ -537,9 +529,9 @@
       phoneError.hidden = true;
       phoneInput.classList.remove("is-invalid");
     }
-    if (e.target === postalInput && isValidPostal(postalInput.value)) {
-      postalError.hidden = true;
-      postalInput.classList.remove("is-invalid");
+    if (e.target === addressInput && addressInput.value.trim()) {
+      if (addressError) addressError.hidden = true;
+      addressInput.classList.remove("is-invalid");
     }
     if (e.target === privacyConsent) {
       if (privacyBox) privacyBox.classList.toggle("is-invalid", !privacyConsent.checked);
@@ -554,8 +546,8 @@
     if (!validate()) {
       if (phoneInput.classList.contains("is-invalid")) {
         phoneInput.focus();
-      } else if (postalInput.classList.contains("is-invalid")) {
-        postalInput.focus();
+      } else if (addressInput && addressInput.classList.contains("is-invalid")) {
+        addressInput.focus();
       } else if (!selectedRadio("size")) {
         const firstSize = form.querySelector('input[name="size"]');
         if (firstSize) firstSize.focus();

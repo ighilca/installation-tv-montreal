@@ -145,31 +145,29 @@
           <p class="field-error" id="phone-error" hidden data-i18n="phoneError">Please enter a phone number.</p>
         </section>
 
-        <!-- 2. Postal code -->
-        <section class="step" aria-labelledby="postal-label">
+        <!-- 2. Address -->
+        <section class="step" aria-labelledby="address-label">
           <div class="step__meta">
             <span class="step__num" aria-hidden="true">02</span>
             <div>
-              <h3 id="postal-label" class="step__title">
-                <span data-i18n="postalLabel">Postal code</span> <span class="req">*</span>
+              <h3 id="address-label" class="step__title">
+                <span data-i18n="addressLabel">Full address</span> <span class="req">*</span>
               </h3>
-              <p class="step__hint" data-i18n="postalHint">To confirm the install area.</p>
+              <p class="step__hint" data-i18n="addressHint">Street, unit, city and postal code — so we can come to you.</p>
             </div>
           </div>
-          <label class="sr-only" for="postal" data-i18n="postalLabel">Postal code</label>
-          <input
-            type="text"
-            id="postal"
-            name="postal"
+          <label class="sr-only" for="address" data-i18n="addressLabel">Full address</label>
+          <textarea
+            id="address"
+            name="address"
             required
-            autocomplete="postal-code"
-            placeholder="H2X 1Y4"
-            inputmode="text"
-            maxlength="7"
-            spellcheck="false"
-          />
-          <p class="field-error" id="postal-error" hidden data-i18n="postalError">Please enter a Canadian postal code (e.g. H2X 1Y4).</p>
-          <p class="privacy-note" data-i18n="collectNotice">Phone, postal code and install choices: to call you back about this estimate. Sent by email (outside Quebec). Access or correction: rideconstruction1@gmail.com.</p>
+            autocomplete="street-address"
+            rows="3"
+            placeholder="123 Example St, apt. 4, Montreal, QC H2X 1Y2"
+            data-i18n-placeholder="addressPlaceholder"
+          ></textarea>
+          <p class="field-error" id="address-error" hidden data-i18n="addressError">Please enter your full address.</p>
+          <p class="privacy-note" data-i18n="collectNotice">Phone, address and install choices: to call you back and prepare the visit. Sent by email (outside Quebec). Access or correction: rideconstruction1@gmail.com.</p>
         </section>
 
         <!-- 3. Size -->
@@ -234,7 +232,7 @@
           <p class="field-error" id="size-error" hidden data-i18n="sizeError">Please choose your TV size.</p>
         </section>
 
-        <!-- 4. Mount -->
+        <!-- 3. Mount -->
         <section class="step" aria-labelledby="mount-label">
           <div class="step__meta">
             <span class="step__num" aria-hidden="true">04</span>
@@ -273,7 +271,7 @@
           </div>
         </section>
 
-        <!-- 5. Extras -->
+        <!-- 4. Extras -->
         <section class="step" aria-labelledby="extras-label">
           <div class="step__meta">
             <span class="step__num" aria-hidden="true">05</span>
@@ -310,7 +308,7 @@
           </div>
         </section>
 
-        <!-- 6. Stand -->
+        <!-- 5. Stand -->
         <section class="step" aria-labelledby="stand-label">
           <div class="step__meta">
             <span class="step__num" aria-hidden="true">06</span>
