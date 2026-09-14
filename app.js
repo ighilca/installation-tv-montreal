@@ -26,23 +26,26 @@
       addressError: "Veuillez entrer votre adresse complète.",
       addressPlaceholder: "123 rue Example, apt. 4, Montréal, QC H2X 1Y2",
       sizeLabel: "Grandeur de votre TV",
-      sizeHint: "Le prix affiché est celui de la pose.",
-      sizeError: "Veuillez choisir la taille de votre TV.",
+      sizeHint: "Une ou plusieurs grandeurs. Quantité 1 par défaut — le prix est celui de la pose.",
+      sizeError: "Choisissez au moins une taille de TV.",
+      qtyLabel: "Quantité",
+      qtyMinus: "Diminuer",
+      qtyPlus: "Augmenter",
       mountLabel: "Support mural",
-      mountHint: "Un seul choix. Les limites sont indiquées clairement.",
+      mountHint: "Un ou plusieurs supports. Quantité 1 par défaut. Laissez vide si vous avez déjà le vôtre.",
       mountNone: "J'ai déjà le support mural",
       mountFixed: "Support fixe",
       mountFixedMax: "Max 80\"",
       mountMobile: "Support articulé",
       mountMobileMax: "Max 55\"",
       extrasLabel: "Options",
-      extrasHint: "Ajoutez seulement ce dont vous avez besoin.",
+      extrasHint: "Ajoutez ce dont vous avez besoin. Quantité 1 par défaut.",
       cableLabel: "Cache-câbles",
       cableDesc: "Goulotte discrète pour cacher les fils",
       ledLabel: "Lumière derrière la TV",
       ledDesc: "Bande LED contrôlable (ambiance)",
       standLabel: "Meuble TV 75\"",
-      standHint: "Meuble flottant large — blanc ou noir.",
+      standHint: "Un ou plusieurs meubles flottants — blanc ou noir. Quantité 1 par défaut.",
       standNone: "Aucun",
       standWhite: "Meuble blanc",
       standBlack: "Meuble noir",
@@ -65,7 +68,6 @@
       summaryStand: "Meuble",
       yes: "Oui",
       no: "Non",
-      collectNotice: "Numéro, adresse et choix d’installation : pour vous rappeler et préparer la visite. Envoi par courriel (hors Québec). Accès ou correction : rideconstruction1@gmail.com.",
       privacyConsent: "J’accepte d’être contacté au sujet de cette estimation.",
       privacyLink: "Politique de confidentialité",
       navPrivacy: "Confidentialité",
@@ -87,22 +89,26 @@
       altStandWhite: "Meuble TV flottant blanc 75 pouces",
       altStandBlack: "Meuble TV flottant noir 75 pouces",
       sizeLabels: {
-        "42": "< 42\" (50 $)",
-        "43-54": "43–54\" (60 $)",
-        "55-65": "55–65\" (80 $)",
-        "66-75": "66–75\" (100 $)",
-        "76-85": "76–85\" (120 $)",
-        "86+": "86\"+ (150 $)",
+        "42": "< 42\"",
+        "43-54": "43–54\"",
+        "55-65": "55–65\"",
+        "66-75": "66–75\"",
+        "76-85": "76–85\"",
+        "86+": "86\"+",
       },
       mountLabels: {
         none: "J'ai déjà le support mural",
-        fixed: "Support fixe (+40 $)",
-        mobile: "Support articulé (+60 $)",
+        fixed: "Support fixe",
+        mobile: "Support articulé",
       },
       standLabels: {
         none: "Aucun",
-        white: "Blanc (+300 $)",
-        black: "Noir (+300 $)",
+        white: "Meuble blanc",
+        black: "Meuble noir",
+      },
+      extraLabels: {
+        cable: "Cache-câbles",
+        led: "Lumière LED",
       },
     },
     en: {
@@ -120,23 +126,26 @@
       addressError: "Please enter your full address.",
       addressPlaceholder: "123 Example St, apt. 4, Montreal, QC H2X 1Y2",
       sizeLabel: "Size of your TV",
-      sizeHint: "The price shown is for the install.",
-      sizeError: "Please choose your TV size.",
+      sizeHint: "One or more sizes. Quantity defaults to 1 — price is for the install.",
+      sizeError: "Please choose at least one TV size.",
+      qtyLabel: "Quantity",
+      qtyMinus: "Decrease",
+      qtyPlus: "Increase",
       mountLabel: "Wall mount",
-      mountHint: "One choice only. Limits are clearly marked.",
+      mountHint: "One or more mounts. Quantity defaults to 1. Leave empty if you already have yours.",
       mountNone: "I already have a wall mount",
       mountFixed: "Fixed mount",
       mountFixedMax: "Max 80\"",
       mountMobile: "Full-motion mount",
       mountMobileMax: "Max 55\"",
       extrasLabel: "Add-ons",
-      extrasHint: "Add only what you need.",
+      extrasHint: "Add what you need. Quantity defaults to 1.",
       cableLabel: "Cable cover",
       cableDesc: "Discrete raceway to hide wires",
       ledLabel: "Light behind the TV",
       ledDesc: "Controllable LED strip (ambiance)",
       standLabel: "TV stand 75\"",
-      standHint: "Wide floating stand — white or black.",
+      standHint: "One or more floating stands — white or black. Quantity defaults to 1.",
       standNone: "None",
       standWhite: "White stand",
       standBlack: "Black stand",
@@ -159,7 +168,6 @@
       summaryStand: "Stand",
       yes: "Yes",
       no: "No",
-      collectNotice: "Phone, address and install choices: to call you back and prepare the visit. Sent by email (outside Quebec). Access or correction: rideconstruction1@gmail.com.",
       privacyConsent: "I agree to be contacted about this estimate.",
       privacyLink: "Privacy policy",
       navPrivacy: "Privacy",
@@ -181,22 +189,26 @@
       altStandWhite: "White floating 75-inch TV stand",
       altStandBlack: "Black floating 75-inch TV stand",
       sizeLabels: {
-        "42": "< 42\" ($50)",
-        "43-54": "43–54\" ($60)",
-        "55-65": "55–65\" ($80)",
-        "66-75": "66–75\" ($100)",
-        "76-85": "76–85\" ($120)",
-        "86+": "86\"+ ($150)",
+        "42": "< 42\"",
+        "43-54": "43–54\"",
+        "55-65": "55–65\"",
+        "66-75": "66–75\"",
+        "76-85": "76–85\"",
+        "86+": "86\"+",
       },
       mountLabels: {
         none: "I already have a wall mount",
-        fixed: "Fixed mount (+$40)",
-        mobile: "Full-motion mount (+$60)",
+        fixed: "Fixed mount",
+        mobile: "Full-motion mount",
       },
       standLabels: {
         none: "None",
-        white: "White (+$300)",
-        black: "Black (+$300)",
+        white: "White stand",
+        black: "Black stand",
+      },
+      extraLabels: {
+        cable: "Cable cover",
+        led: "LED light",
       },
     },
   };
@@ -264,14 +276,26 @@
       }
     });
 
+    form.querySelectorAll(".qty-btn[data-qty='-1'], .size-tile__qty-btn[data-qty='-1']").forEach(function (btn) {
+      btn.setAttribute("aria-label", t("qtyMinus"));
+    });
+    form.querySelectorAll(".qty-btn[data-qty='1'], .size-tile__qty-btn[data-qty='1']").forEach(function (btn) {
+      btn.setAttribute("aria-label", t("qtyPlus"));
+    });
+    form.querySelectorAll(".qty-input, .size-tile__qty-input").forEach(function (input) {
+      input.setAttribute("aria-label", t("qtyLabel"));
+    });
+
     document.title = t("metaTitle");
     var desc = document.querySelector('meta[name="description"]');
     if (desc) desc.setAttribute("content", t("metaDescription"));
     updateWarning();
   }
 
-  function selectedRadio(name) {
-    return form.querySelector('input[name="' + name + '"]:checked');
+  function selectedCheckboxes(name) {
+    return Array.prototype.slice.call(
+      form.querySelectorAll('input[name="' + name + '"]:checked')
+    );
   }
 
   function priceOf(el) {
@@ -282,17 +306,128 @@
     return n + " $";
   }
 
+  function selectedSizes() {
+    return selectedCheckboxes("size");
+  }
+
+  function qtyTileFor(input) {
+    return input.closest("[data-qty-tile], .size-tile");
+  }
+
+  function qtyEls(tile) {
+    if (!tile) return { wrap: null, input: null };
+    return {
+      wrap: tile.querySelector(".qty-controls, .size-tile__qty"),
+      input: tile.querySelector(".qty-input, .size-tile__qty-input"),
+    };
+  }
+
+  function clampQty(n) {
+    if (!n || n < 1) return 1;
+    if (n > 20) return 20;
+    return n;
+  }
+
+  function qtyFor(input) {
+    const els = qtyEls(qtyTileFor(input));
+    const n = els.input ? parseInt(els.input.value, 10) : 1;
+    return clampQty(n);
+  }
+
+  function syncQty(input) {
+    const tile = qtyTileFor(input);
+    const els = qtyEls(tile);
+    if (!els.wrap || !els.input) return;
+    if (input.checked) {
+      els.wrap.hidden = false;
+      if (!els.input.value || parseInt(els.input.value, 10) < 1) {
+        els.input.value = "1";
+      }
+    } else {
+      els.wrap.hidden = true;
+      els.input.value = "1";
+    }
+  }
+
+  function setItemQty(itemInput, next) {
+    const els = qtyEls(qtyTileFor(itemInput));
+    if (!els.input) return;
+    if (next < 1) {
+      itemInput.checked = false;
+      syncQty(itemInput);
+      return;
+    }
+    els.input.value = String(clampQty(next));
+  }
+
+  function totalTvCount() {
+    return selectedSizes().reduce(function (sum, input) {
+      return sum + qtyFor(input);
+    }, 0);
+  }
+
+  function formatPricedLine(label, qty, unit) {
+    const line = qty * unit;
+    if (qty > 1) {
+      return qty + " × " + label + " (" + formatMoney(line) + ")";
+    }
+    return label + " (" + formatMoney(line) + ")";
+  }
+
+  function formatSizeLine(input) {
+    const dict = i18n[lang];
+    return formatPricedLine(
+      dict.sizeLabels[input.value] || input.value,
+      qtyFor(input),
+      priceOf(input)
+    );
+  }
+
+  function formatNamedLines(name, labels) {
+    const items = selectedCheckboxes(name);
+    if (!items.length) return "—";
+    return items
+      .map(function (input) {
+        return formatPricedLine(
+          labels[input.value] || input.value,
+          qtyFor(input),
+          priceOf(input)
+        );
+      })
+      .join(" · ");
+  }
+
+  function sizesSummary() {
+    const sizes = selectedSizes();
+    if (!sizes.length) return "—";
+    return sizes.map(formatSizeLine).join(" · ");
+  }
+
+  function mountsSummary() {
+    return formatNamedLines("mount", i18n[lang].mountLabels);
+  }
+
+  function standsSummary() {
+    return formatNamedLines("stand", i18n[lang].standLabels);
+  }
+
+  function extrasSummary() {
+    return formatNamedLines("extra", i18n[lang].extraLabels);
+  }
+
+  function sumPriced(name) {
+    return selectedCheckboxes(name).reduce(function (sum, input) {
+      return sum + priceOf(input) * qtyFor(input);
+    }, 0);
+  }
+
   function computeTotal() {
-    let total = 0;
-    total += priceOf(selectedRadio("size"));
-    total += priceOf(selectedRadio("mount"));
-    total += priceOf(selectedRadio("stand"));
-
-    form.querySelectorAll('input[type="checkbox"]:checked').forEach(function (cb) {
-      total += priceOf(cb);
-    });
-
-    return total;
+    return (
+      sumPriced("size") +
+      sumPriced("mount") +
+      sumPriced("extra") +
+      sumPriced("stand")
+    );
   }
 
   function updateTotal() {
@@ -304,24 +439,41 @@
   }
 
   function sizeMaxInches() {
-    const size = selectedRadio("size");
-    return size ? Number(size.getAttribute("data-max-inches") || 0) : 0;
+    let max = 0;
+    selectedSizes().forEach(function (input) {
+      const n = Number(input.getAttribute("data-max-inches") || 0);
+      if (n > max) max = n;
+    });
+    return max;
   }
 
   function updateWarning() {
-    const mount = selectedRadio("mount");
-    const maxTv = mount ? Number(mount.getAttribute("data-max-tv") || 999) : 999;
+    const mounts = selectedCheckboxes("mount");
     const sizeMax = sizeMaxInches();
-    const mountVal = mount ? mount.value : "none";
 
-    if (mountVal === "none" || !sizeMax || sizeMax <= maxTv) {
+    if (!mounts.length || !sizeMax) {
+      warningEl.hidden = true;
+      warningEl.textContent = "";
+      return;
+    }
+
+    const messages = [];
+    mounts.forEach(function (mount) {
+      const maxTv = Number(mount.getAttribute("data-max-tv") || 999);
+      if (sizeMax > maxTv) {
+        const msg = mount.value === "mobile" ? t("warnMobile") : t("warnFixed");
+        if (messages.indexOf(msg) === -1) messages.push(msg);
+      }
+    });
+
+    if (!messages.length) {
       warningEl.hidden = true;
       warningEl.textContent = "";
       return;
     }
 
     warningEl.hidden = false;
-    warningEl.textContent = mountVal === "mobile" ? t("warnMobile") : t("warnFixed");
+    warningEl.textContent = messages.join(" ");
   }
 
   function validate() {
@@ -347,7 +499,7 @@
       }
     }
 
-    if (!selectedRadio("size")) {
+    if (!selectedSizes().length) {
       sizeError.hidden = false;
       ok = false;
     } else {
@@ -368,11 +520,15 @@
 
   function buildSummary() {
     const dict = i18n[lang];
-    const size = selectedRadio("size");
-    const mount = selectedRadio("mount");
-    const stand = selectedRadio("stand");
-    const cable = form.querySelector('input[name="cable"]').checked;
-    const led = form.querySelector('input[name="led"]').checked;
+    const extras = selectedCheckboxes("extra");
+    const cable = extras.some(function (el) {
+      return el.value === "cable";
+    });
+    const led = extras.some(function (el) {
+      return el.value === "led";
+    });
+    const cableInput = form.querySelector('input[name="extra"][value="cable"]');
+    const ledInput = form.querySelector('input[name="extra"][value="led"]');
 
     const rows = [
       { label: dict.summaryPhone, value: phoneInput.value.trim() },
@@ -382,23 +538,27 @@
       },
       {
         label: dict.summarySize,
-        value: size ? dict.sizeLabels[size.value] : "—",
+        value: sizesSummary(),
       },
       {
         label: dict.summaryMount,
-        value: mount ? dict.mountLabels[mount.value] : "—",
+        value: mountsSummary(),
       },
       {
         label: dict.summaryCable,
-        value: cable ? dict.yes + " (+30 $)" : dict.no,
+        value: cable
+          ? formatPricedLine(dict.extraLabels.cable, qtyFor(cableInput), priceOf(cableInput))
+          : dict.no,
       },
       {
         label: dict.summaryLed,
-        value: led ? dict.yes + " (+60 $)" : dict.no,
+        value: led
+          ? formatPricedLine(dict.extraLabels.led, qtyFor(ledInput), priceOf(ledInput))
+          : dict.no,
       },
       {
         label: dict.summaryStand,
-        value: stand ? dict.standLabels[stand.value] : "—",
+        value: standsSummary(),
       },
     ];
 
@@ -427,11 +587,16 @@
 
   function collectPayload() {
     const dict = i18n[lang];
-    const size = selectedRadio("size");
-    const mount = selectedRadio("mount");
-    const stand = selectedRadio("stand");
-    const cable = form.querySelector('input[name="cable"]').checked;
-    const led = form.querySelector('input[name="led"]').checked;
+    const extras = selectedCheckboxes("extra");
+    const cable = extras.some(function (el) {
+      return el.value === "cable";
+    });
+    const led = extras.some(function (el) {
+      return el.value === "led";
+    });
+    const cableInput = form.querySelector('input[name="extra"][value="cable"]');
+    const ledInput = form.querySelector('input[name="extra"][value="led"]');
+    const tvCount = totalTvCount();
     const total = formatMoney(computeTotal());
 
     return {
@@ -441,11 +606,16 @@
       _captcha: "false",
       "Téléphone / Phone": phoneInput.value.trim(),
       "Adresse / Address": addressInput ? addressInput.value.trim() : "—",
-      "Taille TV / Size": size ? dict.sizeLabels[size.value] : "—",
-      "Support / Mount": mount ? dict.mountLabels[mount.value] : "—",
-      "Cache-câbles / Cable cover": cable ? dict.yes + " (+30 $)" : dict.no,
-      "Lumière LED / LED light": led ? dict.yes + " (+60 $)" : dict.no,
-      "Meuble / Stand": stand ? dict.standLabels[stand.value] : "—",
+      "Taille TV / Size": sizesSummary(),
+      "Nombre de TV / TV count": String(tvCount || 0),
+      "Support / Mount": mountsSummary(),
+      "Cache-câbles / Cable cover": cable
+        ? formatPricedLine(dict.extraLabels.cable, qtyFor(cableInput), priceOf(cableInput))
+        : dict.no,
+      "Lumière LED / LED light": led
+        ? formatPricedLine(dict.extraLabels.led, qtyFor(ledInput), priceOf(ledInput))
+        : dict.no,
+      "Meuble / Stand": standsSummary(),
       "Total estimé / Estimated total": total,
       Langue: lang.toUpperCase(),
     };
@@ -523,11 +693,60 @@
     });
   });
 
-  form.addEventListener("change", updateTotal);
+  form.addEventListener("change", function (e) {
+    if (
+      e.target &&
+      e.target.matches(
+        'input[type="checkbox"][name="size"], input[type="checkbox"][name="mount"], input[type="checkbox"][name="extra"], input[type="checkbox"][name="stand"]'
+      )
+    ) {
+      syncQty(e.target);
+      if (e.target.name === "size" && selectedSizes().length) sizeError.hidden = true;
+    }
+    updateTotal();
+  });
+
+  form.addEventListener("click", function (e) {
+    const btn = e.target.closest(".qty-btn, .size-tile__qty-btn");
+    if (!btn) return;
+    e.preventDefault();
+    const tile = btn.closest("[data-qty-tile], .size-tile");
+    if (!tile) return;
+    const els = qtyEls(tile);
+    const itemInput = tile.querySelector(
+      'input[name="size"], input[name="mount"], input[name="extra"], input[name="stand"]'
+    );
+    if (!els.input || !itemInput || !itemInput.checked) return;
+    const delta = Number(btn.getAttribute("data-qty") || 0);
+    setItemQty(itemInput, qtyFor(itemInput) + delta);
+    updateTotal();
+  });
+
   form.addEventListener("input", function (e) {
     if (e.target === phoneInput && phoneInput.value.trim()) {
       phoneError.hidden = true;
       phoneInput.classList.remove("is-invalid");
+    }
+    if (
+      e.target &&
+      (e.target.classList.contains("qty-input") ||
+        e.target.classList.contains("size-tile__qty-input"))
+    ) {
+      const tile = e.target.closest("[data-qty-tile], .size-tile");
+      const itemInput = tile
+        ? tile.querySelector(
+            'input[name="size"], input[name="mount"], input[name="extra"], input[name="stand"]'
+          )
+        : null;
+      if (itemInput && itemInput.checked) {
+        const raw = parseInt(e.target.value, 10);
+        if (!raw || raw < 1) {
+          setItemQty(itemInput, 0);
+        } else {
+          setItemQty(itemInput, raw);
+        }
+        updateTotal();
+      }
     }
     if (e.target === addressInput && addressInput.value.trim()) {
       if (addressError) addressError.hidden = true;
@@ -548,7 +767,7 @@
         phoneInput.focus();
       } else if (addressInput && addressInput.classList.contains("is-invalid")) {
         addressInput.focus();
-      } else if (!selectedRadio("size")) {
+      } else if (!selectedSizes().length) {
         const firstSize = form.querySelector('input[name="size"]');
         if (firstSize) firstSize.focus();
       } else if (privacyConsent && !privacyConsent.checked) {

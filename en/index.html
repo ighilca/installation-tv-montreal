@@ -167,7 +167,6 @@
             data-i18n-placeholder="addressPlaceholder"
           ></textarea>
           <p class="field-error" id="address-error" hidden data-i18n="addressError">Please enter your full address.</p>
-          <p class="privacy-note" data-i18n="collectNotice">Phone, address and install choices: to call you back and prepare the visit. Sent by email (outside Quebec). Access or correction: rideconstruction1@gmail.com.</p>
         </section>
 
         <!-- 3. Size -->
@@ -176,172 +175,240 @@
             <span class="step__num" aria-hidden="true">03</span>
             <div>
               <h3 id="size-label" class="step__title" data-i18n="sizeLabel">Size of your TV</h3>
-              <p class="step__hint" data-i18n="sizeHint">The price shown is for the install.</p>
+              <p class="step__hint" data-i18n="sizeHint">One or more sizes. Quantity defaults to 1 — price is for the install.</p>
             </div>
           </div>
-          <div class="size-grid" role="radiogroup" aria-labelledby="size-label">
-            <label class="size-tile">
-              <input type="radio" name="size" value="42" data-price="50" data-max-inches="42" />
-              <span class="size-tile__face">
-                <span class="size-tile__screen" style="--scale: 0.45" aria-hidden="true"></span>
-                <span class="size-tile__range">&lt; 42"</span>
-                <span class="size-tile__price">50 $</span>
-              </span>
-            </label>
-            <label class="size-tile">
-              <input type="radio" name="size" value="43-54" data-price="60" data-max-inches="54" />
-              <span class="size-tile__face">
-                <span class="size-tile__screen" style="--scale: 0.55" aria-hidden="true"></span>
-                <span class="size-tile__range">43–54"</span>
-                <span class="size-tile__price">60 $</span>
-              </span>
-            </label>
-            <label class="size-tile">
-              <input type="radio" name="size" value="55-65" data-price="80" data-max-inches="65" />
-              <span class="size-tile__face">
-                <span class="size-tile__screen" style="--scale: 0.68" aria-hidden="true"></span>
-                <span class="size-tile__range">55–65"</span>
-                <span class="size-tile__price">80 $</span>
-              </span>
-            </label>
-            <label class="size-tile">
-              <input type="radio" name="size" value="66-75" data-price="100" data-max-inches="75" />
-              <span class="size-tile__face">
-                <span class="size-tile__screen" style="--scale: 0.78" aria-hidden="true"></span>
-                <span class="size-tile__range">66–75"</span>
-                <span class="size-tile__price">100 $</span>
-              </span>
-            </label>
-            <label class="size-tile">
-              <input type="radio" name="size" value="76-85" data-price="120" data-max-inches="85" />
-              <span class="size-tile__face">
-                <span class="size-tile__screen" style="--scale: 0.9" aria-hidden="true"></span>
-                <span class="size-tile__range">76–85"</span>
-                <span class="size-tile__price">120 $</span>
-              </span>
-            </label>
-            <label class="size-tile">
-              <input type="radio" name="size" value="86+" data-price="150" data-max-inches="100" />
-              <span class="size-tile__face">
-                <span class="size-tile__screen" style="--scale: 1" aria-hidden="true"></span>
-                <span class="size-tile__range">86"+</span>
-                <span class="size-tile__price">150 $</span>
-              </span>
-            </label>
+          <div class="size-grid" role="group" aria-labelledby="size-label">
+            <div class="size-tile">
+              <label class="size-tile__pick">
+                <input type="checkbox" name="size" value="42" data-price="50" data-max-inches="42" />
+                <span class="size-tile__face">
+                  <span class="size-tile__screen" style="--scale: 0.45" aria-hidden="true"></span>
+                  <span class="size-tile__range">&lt; 42"</span>
+                  <span class="size-tile__price">50 $</span>
+                </span>
+              </label>
+              <div class="size-tile__qty" hidden>
+                <button type="button" class="size-tile__qty-btn" data-qty="-1" aria-label="Decrease">−</button>
+                <input type="number" class="size-tile__qty-input" name="qty-42" value="1" min="0" max="20" inputmode="numeric" aria-label="Quantity" />
+                <button type="button" class="size-tile__qty-btn" data-qty="1" aria-label="Increase">+</button>
+              </div>
+            </div>
+            <div class="size-tile">
+              <label class="size-tile__pick">
+                <input type="checkbox" name="size" value="43-54" data-price="60" data-max-inches="54" />
+                <span class="size-tile__face">
+                  <span class="size-tile__screen" style="--scale: 0.55" aria-hidden="true"></span>
+                  <span class="size-tile__range">43–54"</span>
+                  <span class="size-tile__price">60 $</span>
+                </span>
+              </label>
+              <div class="size-tile__qty" hidden>
+                <button type="button" class="size-tile__qty-btn" data-qty="-1" aria-label="Decrease">−</button>
+                <input type="number" class="size-tile__qty-input" name="qty-43-54" value="1" min="0" max="20" inputmode="numeric" aria-label="Quantity" />
+                <button type="button" class="size-tile__qty-btn" data-qty="1" aria-label="Increase">+</button>
+              </div>
+            </div>
+            <div class="size-tile">
+              <label class="size-tile__pick">
+                <input type="checkbox" name="size" value="55-65" data-price="80" data-max-inches="65" />
+                <span class="size-tile__face">
+                  <span class="size-tile__screen" style="--scale: 0.68" aria-hidden="true"></span>
+                  <span class="size-tile__range">55–65"</span>
+                  <span class="size-tile__price">80 $</span>
+                </span>
+              </label>
+              <div class="size-tile__qty" hidden>
+                <button type="button" class="size-tile__qty-btn" data-qty="-1" aria-label="Decrease">−</button>
+                <input type="number" class="size-tile__qty-input" name="qty-55-65" value="1" min="0" max="20" inputmode="numeric" aria-label="Quantity" />
+                <button type="button" class="size-tile__qty-btn" data-qty="1" aria-label="Increase">+</button>
+              </div>
+            </div>
+            <div class="size-tile">
+              <label class="size-tile__pick">
+                <input type="checkbox" name="size" value="66-75" data-price="100" data-max-inches="75" />
+                <span class="size-tile__face">
+                  <span class="size-tile__screen" style="--scale: 0.78" aria-hidden="true"></span>
+                  <span class="size-tile__range">66–75"</span>
+                  <span class="size-tile__price">100 $</span>
+                </span>
+              </label>
+              <div class="size-tile__qty" hidden>
+                <button type="button" class="size-tile__qty-btn" data-qty="-1" aria-label="Decrease">−</button>
+                <input type="number" class="size-tile__qty-input" name="qty-66-75" value="1" min="0" max="20" inputmode="numeric" aria-label="Quantity" />
+                <button type="button" class="size-tile__qty-btn" data-qty="1" aria-label="Increase">+</button>
+              </div>
+            </div>
+            <div class="size-tile">
+              <label class="size-tile__pick">
+                <input type="checkbox" name="size" value="76-85" data-price="120" data-max-inches="85" />
+                <span class="size-tile__face">
+                  <span class="size-tile__screen" style="--scale: 0.9" aria-hidden="true"></span>
+                  <span class="size-tile__range">76–85"</span>
+                  <span class="size-tile__price">120 $</span>
+                </span>
+              </label>
+              <div class="size-tile__qty" hidden>
+                <button type="button" class="size-tile__qty-btn" data-qty="-1" aria-label="Decrease">−</button>
+                <input type="number" class="size-tile__qty-input" name="qty-76-85" value="1" min="0" max="20" inputmode="numeric" aria-label="Quantity" />
+                <button type="button" class="size-tile__qty-btn" data-qty="1" aria-label="Increase">+</button>
+              </div>
+            </div>
+            <div class="size-tile">
+              <label class="size-tile__pick">
+                <input type="checkbox" name="size" value="86+" data-price="150" data-max-inches="100" />
+                <span class="size-tile__face">
+                  <span class="size-tile__screen" style="--scale: 1" aria-hidden="true"></span>
+                  <span class="size-tile__range">86"+</span>
+                  <span class="size-tile__price">150 $</span>
+                </span>
+              </label>
+              <div class="size-tile__qty" hidden>
+                <button type="button" class="size-tile__qty-btn" data-qty="-1" aria-label="Decrease">−</button>
+                <input type="number" class="size-tile__qty-input" name="qty-86+" value="1" min="0" max="20" inputmode="numeric" aria-label="Quantity" />
+                <button type="button" class="size-tile__qty-btn" data-qty="1" aria-label="Increase">+</button>
+              </div>
+            </div>
           </div>
-          <p class="field-error" id="size-error" hidden data-i18n="sizeError">Please choose your TV size.</p>
+          <p class="field-error" id="size-error" hidden data-i18n="sizeError">Please choose at least one TV size.</p>
         </section>
 
-        <!-- 3. Mount -->
+        <!-- 4. Mount -->
         <section class="step" aria-labelledby="mount-label">
           <div class="step__meta">
             <span class="step__num" aria-hidden="true">04</span>
             <div>
               <h3 id="mount-label" class="step__title" data-i18n="mountLabel">Wall mount</h3>
-              <p class="step__hint" data-i18n="mountHint">One choice only. Limits are clearly marked.</p>
+              <p class="step__hint" data-i18n="mountHint">One or more mounts. Quantity defaults to 1. Leave empty if you already have yours.</p>
             </div>
           </div>
-          <div class="option-row" role="radiogroup" aria-labelledby="mount-label">
-            <label class="option-tile">
-              <input type="radio" name="mount" value="fixed" data-price="40" data-max-tv="80" />
-              <span class="option-tile__face">
-                <img class="option-tile__art" src="../images/support-fixe.png" alt="Fixed wall mount for a television" width="220" height="220" loading="lazy" decoding="async" data-i18n-alt="altFixed" />
-                <span class="option-tile__title" data-i18n="mountFixed">Fixed mount</span>
-                <span class="option-tile__badge" data-i18n="mountFixedMax">Max 80"</span>
-                <span class="option-tile__price">+40 $</span>
-              </span>
-            </label>
-            <label class="option-tile">
-              <input type="radio" name="mount" value="mobile" data-price="60" data-max-tv="55" />
-              <span class="option-tile__face">
-                <img class="option-tile__art" src="../images/support-articule.png" alt="Full-motion wall mount for a television" width="220" height="220" loading="lazy" decoding="async" data-i18n-alt="altMobile" />
-                <span class="option-tile__title" data-i18n="mountMobile">Full-motion mount</span>
-                <span class="option-tile__badge" data-i18n="mountMobileMax">Max 55"</span>
-                <span class="option-tile__price">+60 $</span>
-              </span>
-            </label>
-            <label class="option-tile">
-              <input type="radio" name="mount" value="none" data-price="0" data-max-tv="999" checked />
-              <span class="option-tile__face">
-                <span class="option-tile__art option-tile__art--none" aria-hidden="true"></span>
-                <span class="option-tile__title" data-i18n="mountNone">I already have a wall mount</span>
-                <span class="option-tile__price">0 $</span>
-              </span>
-            </label>
+          <div class="option-row" role="group" aria-labelledby="mount-label">
+            <div class="option-tile" data-qty-tile>
+              <label class="option-tile__pick">
+                <input type="checkbox" name="mount" value="fixed" data-price="40" data-max-tv="80" />
+                <span class="option-tile__face">
+                  <img class="option-tile__art" src="../images/support-fixe.png" alt="Fixed wall mount for a television" width="220" height="220" loading="lazy" decoding="async" data-i18n-alt="altFixed" />
+                  <span class="option-tile__title" data-i18n="mountFixed">Fixed mount</span>
+                  <span class="option-tile__badge" data-i18n="mountFixedMax">Max 80"</span>
+                  <span class="option-tile__price">+40 $</span>
+                </span>
+              </label>
+              <div class="qty-controls" hidden>
+                <button type="button" class="qty-btn" data-qty="-1" aria-label="Decrease">−</button>
+                <input type="number" class="qty-input" name="qty-mount-fixed" value="1" min="0" max="20" inputmode="numeric" aria-label="Quantity" />
+                <button type="button" class="qty-btn" data-qty="1" aria-label="Increase">+</button>
+              </div>
+            </div>
+            <div class="option-tile" data-qty-tile>
+              <label class="option-tile__pick">
+                <input type="checkbox" name="mount" value="mobile" data-price="60" data-max-tv="55" />
+                <span class="option-tile__face">
+                  <img class="option-tile__art" src="../images/support-articule.png" alt="Full-motion wall mount for a television" width="220" height="220" loading="lazy" decoding="async" data-i18n-alt="altMobile" />
+                  <span class="option-tile__title" data-i18n="mountMobile">Full-motion mount</span>
+                  <span class="option-tile__badge" data-i18n="mountMobileMax">Max 55"</span>
+                  <span class="option-tile__price">+60 $</span>
+                </span>
+              </label>
+              <div class="qty-controls" hidden>
+                <button type="button" class="qty-btn" data-qty="-1" aria-label="Decrease">−</button>
+                <input type="number" class="qty-input" name="qty-mount-mobile" value="1" min="0" max="20" inputmode="numeric" aria-label="Quantity" />
+                <button type="button" class="qty-btn" data-qty="1" aria-label="Increase">+</button>
+              </div>
+            </div>
           </div>
         </section>
 
-        <!-- 4. Extras -->
+        <!-- 5. Extras -->
         <section class="step" aria-labelledby="extras-label">
           <div class="step__meta">
             <span class="step__num" aria-hidden="true">05</span>
             <div>
               <h3 id="extras-label" class="step__title" data-i18n="extrasLabel">Add-ons</h3>
-              <p class="step__hint" data-i18n="extrasHint">Add only what you need.</p>
+              <p class="step__hint" data-i18n="extrasHint">Add what you need. Quantity defaults to 1.</p>
             </div>
           </div>
           <div class="extras">
-            <label class="extra">
-              <input type="checkbox" name="cable" value="cable" data-price="30" />
-              <span class="extra__face">
-                <img class="extra__art" src="../images/cache-cables.png" alt="Cable cover raceway for TV wires" width="160" height="160" loading="lazy" decoding="async" data-i18n-alt="altCable" />
-                <span class="extra__copy">
-                  <span class="extra__title" data-i18n="cableLabel">Cable cover</span>
-                  <span class="extra__desc" data-i18n="cableDesc">Discrete raceway to hide wires</span>
+            <div class="extra" data-qty-tile>
+              <label class="extra__pick">
+                <input type="checkbox" name="extra" value="cable" data-price="30" />
+                <span class="extra__face">
+                  <img class="extra__art" src="../images/cache-cables.png" alt="Cable cover raceway for TV wires" width="160" height="160" loading="lazy" decoding="async" data-i18n-alt="altCable" />
+                  <span class="extra__copy">
+                    <span class="extra__title" data-i18n="cableLabel">Cable cover</span>
+                    <span class="extra__desc" data-i18n="cableDesc">Discrete raceway to hide wires</span>
+                  </span>
+                  <span class="extra__price">+30 $</span>
+                  <span class="extra__switch" aria-hidden="true"></span>
                 </span>
-                <span class="extra__price">+30 $</span>
-                <span class="extra__switch" aria-hidden="true"></span>
-              </span>
-            </label>
-            <label class="extra">
-              <input type="checkbox" name="led" value="led" data-price="60" />
-              <span class="extra__face">
-                <img class="extra__art extra__art--cover" src="../images/backlight.png" alt="LED strip behind a wall-mounted TV" width="160" height="160" loading="lazy" decoding="async" data-i18n-alt="altLed" />
-                <span class="extra__copy">
-                  <span class="extra__title" data-i18n="ledLabel">Light behind the TV</span>
-                  <span class="extra__desc" data-i18n="ledDesc">Controllable LED strip (ambiance)</span>
+              </label>
+              <div class="qty-controls" hidden>
+                <button type="button" class="qty-btn" data-qty="-1" aria-label="Decrease">−</button>
+                <input type="number" class="qty-input" name="qty-extra-cable" value="1" min="0" max="20" inputmode="numeric" aria-label="Quantity" />
+                <button type="button" class="qty-btn" data-qty="1" aria-label="Increase">+</button>
+              </div>
+            </div>
+            <div class="extra" data-qty-tile>
+              <label class="extra__pick">
+                <input type="checkbox" name="extra" value="led" data-price="60" />
+                <span class="extra__face">
+                  <img class="extra__art extra__art--cover" src="../images/backlight.png" alt="LED strip behind a wall-mounted TV" width="160" height="160" loading="lazy" decoding="async" data-i18n-alt="altLed" />
+                  <span class="extra__copy">
+                    <span class="extra__title" data-i18n="ledLabel">Light behind the TV</span>
+                    <span class="extra__desc" data-i18n="ledDesc">Controllable LED strip (ambiance)</span>
+                  </span>
+                  <span class="extra__price">+60 $</span>
+                  <span class="extra__switch" aria-hidden="true"></span>
                 </span>
-                <span class="extra__price">+60 $</span>
-                <span class="extra__switch" aria-hidden="true"></span>
-              </span>
-            </label>
+              </label>
+              <div class="qty-controls" hidden>
+                <button type="button" class="qty-btn" data-qty="-1" aria-label="Decrease">−</button>
+                <input type="number" class="qty-input" name="qty-extra-led" value="1" min="0" max="20" inputmode="numeric" aria-label="Quantity" />
+                <button type="button" class="qty-btn" data-qty="1" aria-label="Increase">+</button>
+              </div>
+            </div>
           </div>
         </section>
 
-        <!-- 5. Stand -->
+        <!-- 6. Stand -->
         <section class="step" aria-labelledby="stand-label">
           <div class="step__meta">
             <span class="step__num" aria-hidden="true">06</span>
             <div>
               <h3 id="stand-label" class="step__title" data-i18n="standLabel">TV stand 75"</h3>
-              <p class="step__hint" data-i18n="standHint">Wide floating stand — white or black.</p>
+              <p class="step__hint" data-i18n="standHint">One or more floating stands — white or black. Quantity defaults to 1.</p>
             </div>
           </div>
-          <div class="option-row" role="radiogroup" aria-labelledby="stand-label">
-            <label class="option-tile">
-              <input type="radio" name="stand" value="white" data-price="300" />
-              <span class="option-tile__face">
-                <img class="option-tile__art option-tile__art--cover" src="../images/meuble-blanc.png" alt="White floating 75-inch TV stand" width="480" height="320" loading="lazy" decoding="async" data-i18n-alt="altStandWhite" />
-                <span class="option-tile__title" data-i18n="standWhite">White stand</span>
-                <span class="option-tile__price">+300 $</span>
-              </span>
-            </label>
-            <label class="option-tile">
-              <input type="radio" name="stand" value="black" data-price="300" />
-              <span class="option-tile__face">
-                <img class="option-tile__art option-tile__art--cover" src="../images/meuble-noir.png" alt="Black floating 75-inch TV stand" width="480" height="320" loading="lazy" decoding="async" data-i18n-alt="altStandBlack" />
-                <span class="option-tile__title" data-i18n="standBlack">Black stand</span>
-                <span class="option-tile__price">+300 $</span>
-              </span>
-            </label>
-            <label class="option-tile">
-              <input type="radio" name="stand" value="none" data-price="0" checked />
-              <span class="option-tile__face">
-                <span class="option-tile__art option-tile__art--none" aria-hidden="true"></span>
-                <span class="option-tile__title" data-i18n="standNone">None</span>
-                <span class="option-tile__price">0 $</span>
-              </span>
-            </label>
+          <div class="option-row" role="group" aria-labelledby="stand-label">
+            <div class="option-tile" data-qty-tile>
+              <label class="option-tile__pick">
+                <input type="checkbox" name="stand" value="white" data-price="300" />
+                <span class="option-tile__face">
+                  <img class="option-tile__art option-tile__art--cover" src="../images/meuble-blanc.png" alt="White floating 75-inch TV stand" width="480" height="320" loading="lazy" decoding="async" data-i18n-alt="altStandWhite" />
+                  <span class="option-tile__title" data-i18n="standWhite">White stand</span>
+                  <span class="option-tile__price">+300 $</span>
+                </span>
+              </label>
+              <div class="qty-controls" hidden>
+                <button type="button" class="qty-btn" data-qty="-1" aria-label="Decrease">−</button>
+                <input type="number" class="qty-input" name="qty-stand-white" value="1" min="0" max="20" inputmode="numeric" aria-label="Quantity" />
+                <button type="button" class="qty-btn" data-qty="1" aria-label="Increase">+</button>
+              </div>
+            </div>
+            <div class="option-tile" data-qty-tile>
+              <label class="option-tile__pick">
+                <input type="checkbox" name="stand" value="black" data-price="300" />
+                <span class="option-tile__face">
+                  <img class="option-tile__art option-tile__art--cover" src="../images/meuble-noir.png" alt="Black floating 75-inch TV stand" width="480" height="320" loading="lazy" decoding="async" data-i18n-alt="altStandBlack" />
+                  <span class="option-tile__title" data-i18n="standBlack">Black stand</span>
+                  <span class="option-tile__price">+300 $</span>
+                </span>
+              </label>
+              <div class="qty-controls" hidden>
+                <button type="button" class="qty-btn" data-qty="-1" aria-label="Decrease">−</button>
+                <input type="number" class="qty-input" name="qty-stand-black" value="1" min="0" max="20" inputmode="numeric" aria-label="Quantity" />
+                <button type="button" class="qty-btn" data-qty="1" aria-label="Increase">+</button>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -413,3 +480,4 @@
   <script src="../app.js"></script>
 </body>
 </html>
+
