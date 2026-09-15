@@ -72,7 +72,6 @@
       summaryStand: "Meuble",
       yes: "Oui",
       no: "Non",
-      privacyConsent: "J’accepte d’être contacté au sujet de cette estimation.",
       privacyLink: "Politique de confidentialité",
       navPrivacy: "Confidentialité",
       navCookies: "Témoins",
@@ -81,7 +80,6 @@
       cookieMore: "Politique de témoins",
       cookieRefuse: "Refuser",
       cookieAccept: "Accepter",
-      privacyError: "Cochez la case pour envoyer la demande.",
       metaTitle: "Installation TV Montréal | Pose murale dès 50 $",
       metaDescription: "Pose de TV au mur à Montréal dès 50 $. Support, cache-câbles, LED et meuble. Le prix s’affiche tout de suite. On vous rappelle pour confirmer.",
       seoHeading: "Pose de TV murale à Montréal",
@@ -176,7 +174,6 @@
       summaryStand: "Stand",
       yes: "Yes",
       no: "No",
-      privacyConsent: "I agree to be contacted about this estimate.",
       privacyLink: "Privacy policy",
       navPrivacy: "Privacy",
       navCookies: "Cookies",
@@ -185,7 +182,6 @@
       cookieMore: "Cookie policy",
       cookieRefuse: "Refuse",
       cookieAccept: "Accept",
-      privacyError: "Check the box to send the request.",
       metaTitle: "TV Installation Montreal | Wall mount from $50",
       metaDescription: "TV wall mounting in Montreal from $50. Mounts, cable cover, LED and stand. The price updates as you choose. We’ll call to confirm.",
       seoHeading: "TV wall mounting in Montreal",
@@ -241,9 +237,6 @@
   const submitBtn = document.getElementById("submit-btn");
   const submitError = document.getElementById("submit-error");
   const langButtons = document.querySelectorAll(".lang-btn");
-  const privacyConsent = document.getElementById("privacy-consent");
-  const privacyBox = document.getElementById("privacy-box");
-  const privacyError = document.getElementById("privacy-error");
   let sending = false;
 
   function t(key) {
@@ -495,15 +488,6 @@
       ok = false;
     } else {
       sizeError.hidden = true;
-    }
-
-    if (privacyConsent && !privacyConsent.checked) {
-      if (privacyBox) privacyBox.classList.add("is-invalid");
-      if (privacyError) privacyError.hidden = false;
-      ok = false;
-    } else {
-      if (privacyBox) privacyBox.classList.remove("is-invalid");
-      if (privacyError) privacyError.hidden = true;
     }
 
     return ok;
@@ -805,10 +789,6 @@
         updateTotal();
       }
     }
-    if (e.target === privacyConsent) {
-      if (privacyBox) privacyBox.classList.toggle("is-invalid", !privacyConsent.checked);
-      if (privacyError) privacyError.hidden = privacyConsent.checked;
-    }
   });
 
   form.addEventListener("submit", function (e) {
@@ -819,8 +799,6 @@
       if (!selectedSizes().length) {
         const firstSize = form.querySelector('input[name="size"]');
         if (firstSize) firstSize.focus();
-      } else if (privacyConsent && !privacyConsent.checked) {
-        privacyConsent.focus();
       }
       return;
     }

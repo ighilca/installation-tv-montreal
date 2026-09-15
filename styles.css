@@ -235,6 +235,20 @@ body::before {
   font-size: 0.95rem;
 }
 
+.seo-note .privacy-note {
+  margin-top: 0.75rem;
+}
+
+.seo-note .privacy-note a {
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.seo-note .privacy-note a:hover {
+  color: var(--ink);
+}
+
 /* Steps — open layout, no white Google cards */
 .step {
   padding: 0 0 2.25rem;
@@ -342,8 +356,24 @@ textarea.is-invalid {
 .size-tile {
   display: flex;
   flex-direction: column;
+  align-items: stretch;
   gap: 0.45rem;
   position: relative;
+  padding: 0.85rem 0.6rem 0.9rem;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: inset 0 0 0 1.5px var(--line);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+
+.size-tile:hover {
+  background: rgba(255, 255, 255, 0.92);
+  transform: translateY(-2px);
+}
+
+.size-tile:has(.size-tile__pick input:checked) {
+  background: #fff;
+  box-shadow: inset 0 0 0 2px var(--teal), 0 10px 28px var(--accent-glow);
 }
 
 .size-tile__pick {
@@ -365,27 +395,16 @@ textarea.is-invalid {
   align-items: center;
   justify-content: flex-end;
   gap: 0.35rem;
-  min-height: 7.5rem;
-  padding: 0.85rem 0.6rem 0.9rem;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: inset 0 0 0 1.5px var(--line);
-  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
-}
-
-.size-tile__pick:hover .size-tile__face {
-  background: rgba(255, 255, 255, 0.85);
-  transform: translateY(-2px);
-}
-
-.size-tile__pick input:checked + .size-tile__face {
-  background: #fff;
-  box-shadow: inset 0 0 0 2px var(--teal), 0 10px 28px var(--accent-glow);
+  min-height: 6.4rem;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .size-tile__pick input:focus-visible + .size-tile__face {
   outline: 2px solid var(--teal);
   outline-offset: 3px;
+  border-radius: 10px;
 }
 
 .size-tile__screen {
@@ -398,7 +417,7 @@ textarea.is-invalid {
   transition: transform 0.2s;
 }
 
-.size-tile__pick input:checked + .size-tile__face .size-tile__screen {
+.size-tile:has(.size-tile__pick input:checked) .size-tile__screen {
   transform: scale(1.06);
   box-shadow: 0 0 0 2px var(--teal), 0 8px 16px var(--accent-glow);
 }
@@ -422,6 +441,9 @@ textarea.is-invalid {
   align-items: center;
   justify-content: center;
   gap: 0.35rem;
+  margin-top: 0.15rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--line);
 }
 
 .size-tile__qty[hidden],
@@ -436,7 +458,7 @@ textarea.is-invalid {
   height: 2rem;
   border: 0;
   border-radius: 10px;
-  background: #fff;
+  background: #f3f6f8;
   box-shadow: inset 0 0 0 1.5px var(--line);
   color: var(--ink);
   font: inherit;
@@ -459,7 +481,7 @@ textarea.is-invalid {
   padding: 0;
   border: 0;
   border-radius: 10px;
-  background: #fff;
+  background: #f3f6f8;
   box-shadow: inset 0 0 0 1.5px var(--line);
   text-align: center;
   font: inherit;
@@ -482,12 +504,6 @@ textarea.is-invalid {
   box-shadow: 0 0 0 3px var(--teal-soft), inset 0 0 0 1.5px var(--teal);
 }
 
-.option-tile .qty-controls,
-.extra .qty-controls {
-  justify-content: flex-start;
-  padding-left: 0.9rem;
-}
-
 /* Mount / stand option tiles */
 .option-row {
   display: grid;
@@ -498,8 +514,24 @@ textarea.is-invalid {
 .option-tile {
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: 0;
   position: relative;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: inset 0 0 0 1.5px var(--line);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+  overflow: hidden;
+}
+
+.option-tile:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-1px);
+}
+
+.option-tile:has(.option-tile__pick input:checked),
+.option-tile:has(> input:checked) {
+  background: #fff;
+  box-shadow: inset 0 0 0 2px var(--teal), 0 10px 28px var(--accent-glow);
 }
 
 .option-tile__pick {
@@ -524,28 +556,25 @@ textarea.is-invalid {
   row-gap: 0.2rem;
   align-items: center;
   padding: 0.9rem;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: inset 0 0 0 1.5px var(--line);
-  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
-}
-
-.option-tile__pick:hover .option-tile__face,
-.option-tile:hover > .option-tile__face {
-  background: rgba(255, 255, 255, 0.9);
-  transform: translateY(-1px);
-}
-
-.option-tile__pick input:checked + .option-tile__face,
-.option-tile > input:checked + .option-tile__face {
-  background: #fff;
-  box-shadow: inset 0 0 0 2px var(--teal), 0 10px 28px var(--accent-glow);
+  background: transparent;
+  box-shadow: none;
 }
 
 .option-tile__pick input:focus-visible + .option-tile__face,
 .option-tile > input:focus-visible + .option-tile__face {
   outline: 2px solid var(--teal);
-  outline-offset: 3px;
+  outline-offset: -4px;
+  border-radius: 12px;
+}
+
+.option-tile .qty-controls {
+  justify-content: flex-start;
+  margin: 0 0.9rem 0.9rem;
+  padding: 0.55rem 0 0;
+}
+
+.option-tile:has(.qty-controls:not([hidden])) .option-tile__face {
+  padding-bottom: 0.55rem;
 }
 
 .option-tile__art {
@@ -622,8 +651,23 @@ img.extra__art--cover {
 .extra {
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: 0;
   position: relative;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: inset 0 0 0 1.5px var(--line);
+  transition: background 0.2s, box-shadow 0.2s;
+  overflow: hidden;
+}
+
+.extra:hover {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.extra:has(.extra__pick input:checked),
+.extra:has(> input:checked) {
+  background: #fff;
+  box-shadow: inset 0 0 0 2px var(--teal), 0 10px 28px var(--accent-glow);
 }
 
 .extra__pick {
@@ -647,27 +691,29 @@ img.extra__art--cover {
   gap: 0.15rem 0.85rem;
   align-items: center;
   padding: 0.95rem;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: inset 0 0 0 1.5px var(--line);
-  transition: background 0.2s, box-shadow 0.2s;
-}
-
-.extra__pick:hover .extra__face,
-.extra:hover > .extra__face {
-  background: rgba(255, 255, 255, 0.9);
-}
-
-.extra__pick input:checked + .extra__face,
-.extra > input:checked + .extra__face {
-  background: #fff;
-  box-shadow: inset 0 0 0 2px var(--teal), 0 10px 28px var(--accent-glow);
+  background: transparent;
+  box-shadow: none;
 }
 
 .extra__pick input:focus-visible + .extra__face,
 .extra > input:focus-visible + .extra__face {
   outline: 2px solid var(--teal);
-  outline-offset: 3px;
+  outline-offset: -4px;
+  border-radius: 12px;
+}
+
+.extra .qty-controls {
+  justify-content: flex-start;
+  margin: 0 0.95rem 0.95rem;
+  padding: 0.55rem 0 0;
+}
+
+.extra:has(.qty-controls:not([hidden])) .extra__face {
+  padding-bottom: 0.55rem;
+}
+
+.extra:has(input:checked) .extra__switch {
+  display: none;
 }
 
 .extra__art {
