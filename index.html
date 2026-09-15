@@ -121,58 +121,10 @@
           <p class="config__lead" data-i18n="lead">Répondez étape par étape. Le total se met à jour tout de suite.</p>
         </header>
 
-        <!-- 1. Phone -->
-        <section class="step" aria-labelledby="phone-label">
-          <div class="step__meta">
-            <span class="step__num" aria-hidden="true">01</span>
-            <div>
-              <h3 id="phone-label" class="step__title">
-                <span data-i18n="phoneLabel">Téléphone</span> <span class="req">*</span>
-              </h3>
-              <p class="step__hint" data-i18n="phoneHint">On vous contacte pour confirmer le créneau.</p>
-            </div>
-          </div>
-          <label class="sr-only" for="phone" data-i18n="phoneLabel">Téléphone</label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            required
-            autocomplete="tel"
-            placeholder="(514) 555-1234"
-            inputmode="tel"
-          />
-          <p class="field-error" id="phone-error" hidden data-i18n="phoneError">Veuillez entrer un numéro de téléphone.</p>
-        </section>
-
-        <!-- 2. Address -->
-        <section class="step" aria-labelledby="address-label">
-          <div class="step__meta">
-            <span class="step__num" aria-hidden="true">02</span>
-            <div>
-              <h3 id="address-label" class="step__title">
-                <span data-i18n="addressLabel">Adresse complète</span> <span class="req">*</span>
-              </h3>
-              <p class="step__hint" data-i18n="addressHint">Rue, appartement, ville et code postal — pour se rendre chez vous.</p>
-            </div>
-          </div>
-          <label class="sr-only" for="address" data-i18n="addressLabel">Adresse complète</label>
-          <textarea
-            id="address"
-            name="address"
-            required
-            autocomplete="street-address"
-            rows="3"
-            placeholder="123 rue Example, apt. 4, Montréal, QC H2X 1Y2"
-            data-i18n-placeholder="addressPlaceholder"
-          ></textarea>
-          <p class="field-error" id="address-error" hidden data-i18n="addressError">Veuillez entrer votre adresse complète.</p>
-        </section>
-
-        <!-- 3. Size -->
+        <!-- 1. Size -->
         <section class="step" aria-labelledby="size-label">
           <div class="step__meta">
-            <span class="step__num" aria-hidden="true">03</span>
+            <span class="step__num" aria-hidden="true">01</span>
             <div>
               <h3 id="size-label" class="step__title" data-i18n="sizeLabel">Grandeur de votre TV</h3>
               <p class="step__hint" data-i18n="sizeHint">Une ou plusieurs grandeurs. Quantité 1 par défaut — le prix est celui de la pose.</p>
@@ -273,10 +225,10 @@
           <p class="field-error" id="size-error" hidden data-i18n="sizeError">Choisissez au moins une taille de TV.</p>
         </section>
 
-        <!-- 4. Mount -->
+        <!-- 2. Mount -->
         <section class="step" aria-labelledby="mount-label">
           <div class="step__meta">
-            <span class="step__num" aria-hidden="true">04</span>
+            <span class="step__num" aria-hidden="true">02</span>
             <div>
               <h3 id="mount-label" class="step__title" data-i18n="mountLabel">Support mural</h3>
               <p class="step__hint" data-i18n="mountHint">Un ou plusieurs supports. Quantité 1 par défaut. Laissez vide si vous avez déjà le vôtre.</p>
@@ -318,10 +270,10 @@
           </div>
         </section>
 
-        <!-- 5. Extras -->
+        <!-- 3. Extras -->
         <section class="step" aria-labelledby="extras-label">
           <div class="step__meta">
-            <span class="step__num" aria-hidden="true">05</span>
+            <span class="step__num" aria-hidden="true">03</span>
             <div>
               <h3 id="extras-label" class="step__title" data-i18n="extrasLabel">Options</h3>
               <p class="step__hint" data-i18n="extrasHint">Ajoutez ce dont vous avez besoin. Quantité 1 par défaut.</p>
@@ -369,10 +321,10 @@
           </div>
         </section>
 
-        <!-- 6. Stand -->
+        <!-- 4. Stand -->
         <section class="step" aria-labelledby="stand-label">
           <div class="step__meta">
-            <span class="step__num" aria-hidden="true">06</span>
+            <span class="step__num" aria-hidden="true">04</span>
             <div>
               <h3 id="stand-label" class="step__title" data-i18n="standLabel">Meuble TV 75"</h3>
               <p class="step__hint" data-i18n="standHint">Un ou plusieurs meubles flottants — blanc ou noir. Quantité 1 par défaut.</p>
@@ -460,6 +412,49 @@
       <button type="submit" form="tv-form" class="btn btn-primary" id="submit-btn" data-i18n="submit">Envoyer</button>
     </div>
   </aside>
+
+  <!-- Contact asked on submit -->
+  <div class="contact-modal" id="contact-modal" hidden role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+    <div class="contact-modal__panel">
+      <h2 id="contact-modal-title" data-i18n="contactTitle">Dernière étape</h2>
+      <p class="contact-modal__hint" data-i18n="contactHint">Indiquez votre téléphone et votre adresse. On prépare la pose et on vous rappelle pour confirmer le créneau.</p>
+
+      <label class="contact-modal__label" for="phone">
+        <span data-i18n="phoneLabel">Téléphone</span> <span class="req">*</span>
+      </label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        form="tv-form"
+        required
+        autocomplete="tel"
+        placeholder="(514) 555-1234"
+        inputmode="tel"
+      />
+      <p class="field-error" id="phone-error" hidden data-i18n="phoneError">Veuillez entrer un numéro de téléphone.</p>
+
+      <label class="contact-modal__label" for="address">
+        <span data-i18n="addressLabel">Adresse complète</span> <span class="req">*</span>
+      </label>
+      <textarea
+        id="address"
+        name="address"
+        form="tv-form"
+        required
+        autocomplete="street-address"
+        rows="3"
+        placeholder="123 rue Example, apt. 4, Montréal, QC H2X 1Y2"
+        data-i18n-placeholder="addressPlaceholder"
+      ></textarea>
+      <p class="field-error" id="address-error" hidden data-i18n="addressError">Veuillez entrer votre adresse complète.</p>
+
+      <div class="contact-modal__actions">
+        <button type="button" class="btn btn-ghost" id="contact-cancel" data-i18n="contactCancel">Retour</button>
+        <button type="button" class="btn btn-primary" id="contact-confirm" data-i18n="contactConfirm">Envoyer ma demande</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Confirmation -->
   <div class="confirm" id="confirm-screen" hidden>

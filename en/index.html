@@ -121,58 +121,10 @@
           <p class="config__lead" data-i18n="lead">Answer step by step. The total updates instantly.</p>
         </header>
 
-        <!-- 1. Phone -->
-        <section class="step" aria-labelledby="phone-label">
-          <div class="step__meta">
-            <span class="step__num" aria-hidden="true">01</span>
-            <div>
-              <h3 id="phone-label" class="step__title">
-                <span data-i18n="phoneLabel">Phone</span> <span class="req">*</span>
-              </h3>
-              <p class="step__hint" data-i18n="phoneHint">We’ll call to confirm your time slot.</p>
-            </div>
-          </div>
-          <label class="sr-only" for="phone" data-i18n="phoneLabel">Phone</label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            required
-            autocomplete="tel"
-            placeholder="(514) 555-1234"
-            inputmode="tel"
-          />
-          <p class="field-error" id="phone-error" hidden data-i18n="phoneError">Please enter a phone number.</p>
-        </section>
-
-        <!-- 2. Address -->
-        <section class="step" aria-labelledby="address-label">
-          <div class="step__meta">
-            <span class="step__num" aria-hidden="true">02</span>
-            <div>
-              <h3 id="address-label" class="step__title">
-                <span data-i18n="addressLabel">Full address</span> <span class="req">*</span>
-              </h3>
-              <p class="step__hint" data-i18n="addressHint">Street, unit, city and postal code — so we can come to you.</p>
-            </div>
-          </div>
-          <label class="sr-only" for="address" data-i18n="addressLabel">Full address</label>
-          <textarea
-            id="address"
-            name="address"
-            required
-            autocomplete="street-address"
-            rows="3"
-            placeholder="123 Example St, apt. 4, Montreal, QC H2X 1Y2"
-            data-i18n-placeholder="addressPlaceholder"
-          ></textarea>
-          <p class="field-error" id="address-error" hidden data-i18n="addressError">Please enter your full address.</p>
-        </section>
-
-        <!-- 3. Size -->
+        <!-- 1. Size -->
         <section class="step" aria-labelledby="size-label">
           <div class="step__meta">
-            <span class="step__num" aria-hidden="true">03</span>
+            <span class="step__num" aria-hidden="true">01</span>
             <div>
               <h3 id="size-label" class="step__title" data-i18n="sizeLabel">Size of your TV</h3>
               <p class="step__hint" data-i18n="sizeHint">One or more sizes. Quantity defaults to 1 — price is for the install.</p>
@@ -273,10 +225,10 @@
           <p class="field-error" id="size-error" hidden data-i18n="sizeError">Please choose at least one TV size.</p>
         </section>
 
-        <!-- 4. Mount -->
+        <!-- 2. Mount -->
         <section class="step" aria-labelledby="mount-label">
           <div class="step__meta">
-            <span class="step__num" aria-hidden="true">04</span>
+            <span class="step__num" aria-hidden="true">02</span>
             <div>
               <h3 id="mount-label" class="step__title" data-i18n="mountLabel">Wall mount</h3>
               <p class="step__hint" data-i18n="mountHint">One or more mounts. Quantity defaults to 1. Leave empty if you already have yours.</p>
@@ -318,10 +270,10 @@
           </div>
         </section>
 
-        <!-- 5. Extras -->
+        <!-- 3. Extras -->
         <section class="step" aria-labelledby="extras-label">
           <div class="step__meta">
-            <span class="step__num" aria-hidden="true">05</span>
+            <span class="step__num" aria-hidden="true">03</span>
             <div>
               <h3 id="extras-label" class="step__title" data-i18n="extrasLabel">Add-ons</h3>
               <p class="step__hint" data-i18n="extrasHint">Add what you need. Quantity defaults to 1.</p>
@@ -369,10 +321,10 @@
           </div>
         </section>
 
-        <!-- 6. Stand -->
+        <!-- 4. Stand -->
         <section class="step" aria-labelledby="stand-label">
           <div class="step__meta">
-            <span class="step__num" aria-hidden="true">06</span>
+            <span class="step__num" aria-hidden="true">04</span>
             <div>
               <h3 id="stand-label" class="step__title" data-i18n="standLabel">TV stand 75"</h3>
               <p class="step__hint" data-i18n="standHint">One or more floating stands — white or black. Quantity defaults to 1.</p>
@@ -460,6 +412,49 @@
       <button type="submit" form="tv-form" class="btn btn-primary" id="submit-btn" data-i18n="submit">Submit</button>
     </div>
   </aside>
+
+  <!-- Contact asked on submit -->
+  <div class="contact-modal" id="contact-modal" hidden role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+    <div class="contact-modal__panel">
+      <h2 id="contact-modal-title" data-i18n="contactTitle">Last step</h2>
+      <p class="contact-modal__hint" data-i18n="contactHint">Enter your phone and full address. We’ll prepare the install and call to confirm your time slot.</p>
+
+      <label class="contact-modal__label" for="phone">
+        <span data-i18n="phoneLabel">Phone</span> <span class="req">*</span>
+      </label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        form="tv-form"
+        required
+        autocomplete="tel"
+        placeholder="(514) 555-1234"
+        inputmode="tel"
+      />
+      <p class="field-error" id="phone-error" hidden data-i18n="phoneError">Please enter a phone number.</p>
+
+      <label class="contact-modal__label" for="address">
+        <span data-i18n="addressLabel">Full address</span> <span class="req">*</span>
+      </label>
+      <textarea
+        id="address"
+        name="address"
+        form="tv-form"
+        required
+        autocomplete="street-address"
+        rows="3"
+        placeholder="123 Example St, apt. 4, Montreal, QC H2X 1Y2"
+        data-i18n-placeholder="addressPlaceholder"
+      ></textarea>
+      <p class="field-error" id="address-error" hidden data-i18n="addressError">Please enter your full address.</p>
+
+      <div class="contact-modal__actions">
+        <button type="button" class="btn btn-ghost" id="contact-cancel" data-i18n="contactCancel">Back</button>
+        <button type="button" class="btn btn-primary" id="contact-confirm" data-i18n="contactConfirm">Send my request</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Confirmation -->
   <div class="confirm" id="confirm-screen" hidden>

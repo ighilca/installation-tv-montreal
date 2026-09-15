@@ -25,6 +25,10 @@
       addressHint: "Rue, appartement, ville et code postal — pour se rendre chez vous.",
       addressError: "Veuillez entrer votre adresse complète.",
       addressPlaceholder: "123 rue Example, apt. 4, Montréal, QC H2X 1Y2",
+      contactTitle: "Dernière étape",
+      contactHint: "Indiquez votre téléphone et votre adresse. On prépare la pose et on vous rappelle pour confirmer le créneau.",
+      contactCancel: "Retour",
+      contactConfirm: "Envoyer ma demande",
       sizeLabel: "Grandeur de votre TV",
       sizeHint: "Une ou plusieurs grandeurs. Quantité 1 par défaut — le prix est celui de la pose.",
       sizeError: "Choisissez au moins une taille de TV.",
@@ -125,6 +129,10 @@
       addressHint: "Street, unit, city and postal code — so we can come to you.",
       addressError: "Please enter your full address.",
       addressPlaceholder: "123 Example St, apt. 4, Montreal, QC H2X 1Y2",
+      contactTitle: "Last step",
+      contactHint: "Enter your phone and full address. We’ll prepare the install and call to confirm your time slot.",
+      contactCancel: "Back",
+      contactConfirm: "Send my request",
       sizeLabel: "Size of your TV",
       sizeHint: "One or more sizes. Quantity defaults to 1 — price is for the install.",
       sizeError: "Please choose at least one TV size.",
@@ -226,6 +234,9 @@
   const phoneError = document.getElementById("phone-error");
   const addressInput = document.getElementById("address");
   const addressError = document.getElementById("address-error");
+  const contactModal = document.getElementById("contact-modal");
+  const contactCancel = document.getElementById("contact-cancel");
+  const contactConfirm = document.getElementById("contact-confirm");
   const sizeError = document.getElementById("size-error");
   const submitBtn = document.getElementById("submit-btn");
   const submitError = document.getElementById("submit-error");
@@ -479,26 +490,6 @@
   function validate() {
     let ok = true;
 
-    if (!phoneInput.value.trim()) {
-      phoneError.hidden = false;
-      phoneInput.classList.add("is-invalid");
-      ok = false;
-    } else {
-      phoneError.hidden = true;
-      phoneInput.classList.remove("is-invalid");
-    }
-
-    if (addressInput) {
-      if (!addressInput.value.trim()) {
-        if (addressError) addressError.hidden = false;
-        addressInput.classList.add("is-invalid");
-        ok = false;
-      } else {
-        if (addressError) addressError.hidden = true;
-        addressInput.classList.remove("is-invalid");
-      }
-    }
-
     if (!selectedSizes().length) {
       sizeError.hidden = false;
       ok = false;
@@ -516,6 +507,76 @@
     }
 
     return ok;
+  }
+
+  function validateContact() {
+    let ok = true;
+
+    if (!phoneInput || !phoneInput.value.trim()) {
+      if (phoneError) phoneError.hidden = false;
+      if (phoneInput) phoneInput.classList.add("is-invalid");
+      ok = false;
+    } else {
+      if (phoneError) phoneError.hidden = true;
+      phoneInput.classList.remove("is-invalid");
+    }
+
+    if (!addressInput || !addressInput.value.trim()) {
+      if (addressError) addressError.hidden = false;
+      if (addressInput) addressInput.classList.add("is-invalid");
+      ok = false;
+    } else {
+      if (addressError) addressError.hidden = true;
+      addressInput.classList.remove("is-invalid");
+    }
+
+    return ok;
+  }
+
+  function showContactModal() {
+    if (!contactModal) return;
+    contactModal.hidden = false;
+    document.body.classList.add("is-asking-contact");
+    if (phoneError) phoneError.hidden = true;
+    if (addressError) addressError.hidden = true;
+    if (phoneInput) {
+      phoneInput.classList.remove("is-invalid");
+      phoneInput.focus();
+    }
+    if (addressInput) addressInput.classList.remove("is-invalid");
+  }
+
+  function hideContactModal() {
+    if (!contactModal) return;
+    contactModal.hidden = true;
+    document.body.classList.remove("is-asking-contact");
+  }
+
+  function submitLead() {
+    if (submitError) submitError.hidden = true;
+    setSending(true);
+    if (contactConfirm) contactConfirm.disabled = true;
+
+    sendRequest()
+      .then(function () {
+        hideContactModal();
+        showConfirm();
+      })
+      .catch(function (err) {
+        hideContactModal();
+        if (submitError) {
+          submitError.hidden = false;
+          submitError.textContent =
+            err && err.message === "ACTIVATE" ? t("activateEmail") : t("submitError");
+        }
+      })
+      .finally(function () {
+        setSending(false);
+        if (contactConfirm) {
+          contactConfirm.disabled = false;
+          contactConfirm.textContent = t("contactConfirm");
+        }
+      });
   }
 
   function buildSummary() {
@@ -723,10 +784,6 @@
   });
 
   form.addEventListener("input", function (e) {
-    if (e.target === phoneInput && phoneInput.value.trim()) {
-      phoneError.hidden = true;
-      phoneInput.classList.remove("is-invalid");
-    }
     if (
       e.target &&
       (e.target.classList.contains("qty-input") ||
@@ -748,10 +805,6 @@
         updateTotal();
       }
     }
-    if (e.target === addressInput && addressInput.value.trim()) {
-      if (addressError) addressError.hidden = true;
-      addressInput.classList.remove("is-invalid");
-    }
     if (e.target === privacyConsent) {
       if (privacyBox) privacyBox.classList.toggle("is-invalid", !privacyConsent.checked);
       if (privacyError) privacyError.hidden = privacyConsent.checked;
@@ -763,11 +816,7 @@
     if (sending) return;
 
     if (!validate()) {
-      if (phoneInput.classList.contains("is-invalid")) {
-        phoneInput.focus();
-      } else if (addressInput && addressInput.classList.contains("is-invalid")) {
-        addressInput.focus();
-      } else if (!selectedSizes().length) {
+      if (!selectedSizes().length) {
         const firstSize = form.querySelector('input[name="size"]');
         if (firstSize) firstSize.focus();
       } else if (privacyConsent && !privacyConsent.checked) {
@@ -777,22 +826,50 @@
     }
 
     if (submitError) submitError.hidden = true;
-    setSending(true);
+    showContactModal();
+  });
 
-    sendRequest()
-      .then(function () {
-        showConfirm();
-      })
-      .catch(function (err) {
-        if (submitError) {
-          submitError.hidden = false;
-          submitError.textContent =
-            err && err.message === "ACTIVATE" ? t("activateEmail") : t("submitError");
+  if (contactCancel) {
+    contactCancel.addEventListener("click", function () {
+      if (sending) return;
+      hideContactModal();
+    });
+  }
+
+  if (contactConfirm) {
+    contactConfirm.addEventListener("click", function () {
+      if (sending) return;
+      if (!validateContact()) {
+        if (phoneInput && phoneInput.classList.contains("is-invalid")) {
+          phoneInput.focus();
+        } else if (addressInput) {
+          addressInput.focus();
         }
-      })
-      .finally(function () {
-        setSending(false);
-      });
+        return;
+      }
+      submitLead();
+    });
+  }
+
+  if (contactModal) {
+    contactModal.addEventListener("click", function (e) {
+      if (e.target === contactModal && !sending) hideContactModal();
+    });
+    contactModal.addEventListener("input", function (e) {
+      if (e.target === phoneInput && phoneInput.value.trim()) {
+        if (phoneError) phoneError.hidden = true;
+        phoneInput.classList.remove("is-invalid");
+      }
+      if (e.target === addressInput && addressInput.value.trim()) {
+        if (addressError) addressError.hidden = true;
+        addressInput.classList.remove("is-invalid");
+      }
+    });
+  }
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    if (contactModal && !contactModal.hidden && !sending) hideContactModal();
   });
 
   editBtn.addEventListener("click", hideConfirm);
